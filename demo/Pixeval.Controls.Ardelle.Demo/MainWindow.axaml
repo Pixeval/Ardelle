@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:card="clr-namespace:Pixeval.Controls.Ardelle.Controls.Card;assembly=Pixeval.Controls.Ardelle"
+        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions;assembly=Pixeval.Controls.Ardelle"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
+        Title="Pixeval.Controls.Ardelle.Demo">
+    <Grid Height="1080" Width="1920">
+        <card:Card Brutalized="True" Width="500" Height="300" Background="{markupExtensions:ColorToken Name=Primary}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Brutalized Card" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Foreground="{markupExtensions:ColorToken Name=OnPrimary}" />
+        </card:Card>
+    </Grid>
+</Window>

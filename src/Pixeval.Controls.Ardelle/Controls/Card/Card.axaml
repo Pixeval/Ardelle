@@ -1,0 +1,44 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Card"
+        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+    <Design.PreviewWith>
+        <controls:Card Brutalized="True" Width="500" Height="300" Background="{markupExtensions:ColorToken Name=Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Brutalized Card" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Foreground="{markupExtensions:ColorToken Name=OnSecondary}" />
+        </controls:Card>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|Card">
+        <Setter Property="Background">
+            <SolidColorBrush>White</SolidColorBrush>
+        </Setter>
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultCardBorderBrush}" />
+        
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:Card">
+                <Grid Background="Transparent" Margin="{StaticResource CardContainerGridMargin}">
+                    <Border
+                        x:Name="PART_BackgroundBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{StaticResource DefaultCardBorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Margin="{TemplateBinding Padding}" 
+                            Content="{TemplateBinding Content}" 
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^[Brutalized=True]/template/Border#PART_BackgroundBorder">
+            <Setter Property="BorderThickness" Value="{StaticResource BrutalizedCardBorderThickness}" />
+            <Setter Property="BoxShadow" Value="{StaticResource BrutalizedCardBoxShadow}" />
+        </Style>
+    </Style>
+</Styles>
