@@ -1,3 +1,6 @@
-<Styles xmlns="https://github.com/avaloniaui">
-    <StyleInclude Source="../Controls/Card/Card.axaml" />
-</Styles>
+<ResourceDictionary xmlns="https://github.com/avaloniaui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="../Controls/Buttons/Includes.axaml" />
+        <ResourceInclude Source="../Controls/Card/Includes.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

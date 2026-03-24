@@ -11,7 +11,7 @@ public class ColorPalette(Color baseline)
     public SolidColorBrush OnBaseline => GetContrastColor(baseline).Brush;
 
     public List<(SolidColorBrush original, SolidColorBrush contrast)> Dimmed =>
-        _palette.Value[0..(_palette.Value.Count / 2)]
+        _palette.Value[..(_palette.Value.Count / 2)]
             .Select(color => color.Brush)
             .Zip(_palette.Value[..(_palette.Value.Count / 2)].Select(color => GetContrastColor(color).Brush)).ToList();
 
@@ -20,7 +20,7 @@ public class ColorPalette(Color baseline)
             .Select(color => color.Brush)
             .Zip(_palette.Value[(_palette.Value.Count / 2)..].Select(color => GetContrastColor(color).Brush)).ToList();
     
-    private static List<Color> GenerateAnchoredPalette(Color baseColor)
+    public static List<Color> GenerateAnchoredPalette(Color baseColor)
     {
         const int paletteSize = 11;
         var palette = new List<Color>();
@@ -38,7 +38,7 @@ public class ColorPalette(Color baseline)
                 {
                     var t = (double) i / midIndex; 
                     lightness = t * hsl.L;
-                    saturation = hsl.S * (0.8 + (0.2 * t));
+                    saturation = hsl.S * (0.8 + 0.2 * t);
                     break;
                 }
                 case midIndex:
@@ -47,8 +47,8 @@ public class ColorPalette(Color baseline)
                 default:
                 {
                     var t = (double) (i - midIndex) / (paletteSize - 1 - midIndex);
-                    lightness = hsl.L + (t * (1.0 - hsl.L));
-                    saturation = hsl.S * (1.0 - (t * 0.6));
+                    lightness = hsl.L + t * (1.0 - hsl.L);
+                    saturation = hsl.S * (1.0 - t * 0.6);
                     break;
                 }
             }

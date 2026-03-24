@@ -4,9 +4,8 @@
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Colors.axaml" />
         <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Corners.axaml" />
-        <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/ControlTokens.axaml" />
+        <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Controls.axaml" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Styles.Resources>
-  <StyleInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Controls.axaml" />
 </Styles>

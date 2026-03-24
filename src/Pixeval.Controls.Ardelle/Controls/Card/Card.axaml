@@ -1,19 +1,21 @@
-<Styles xmlns="https://github.com/avaloniaui"
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Card"
         xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <Design.PreviewWith>
         <controls:Card Brutalized="True" Width="500" Height="300" Background="{markupExtensions:ColorToken Name=Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Brutalized Card" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Foreground="{markupExtensions:ColorToken Name=OnSecondary}" />
+            <TextBlock Background="Red" Text="Brutalized Card" FontSize="24" Foreground="{markupExtensions:ColorToken Name=OnSecondary}" />
         </controls:Card>
     </Design.PreviewWith>
 
-    <Style Selector="controls|Card">
+    <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
         <Setter Property="Background">
             <SolidColorBrush>White</SolidColorBrush>
         </Setter>
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultCardBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
         
         <Setter Property="Template">
             <ControlTemplate TargetType="controls:Card">
@@ -40,5 +42,5 @@
             <Setter Property="BorderThickness" Value="{StaticResource BrutalizedCardBorderThickness}" />
             <Setter Property="BoxShadow" Value="{StaticResource BrutalizedCardBoxShadow}" />
         </Style>
-    </Style>
-</Styles>
+    </ControlTheme>
+</ResourceDictionary>

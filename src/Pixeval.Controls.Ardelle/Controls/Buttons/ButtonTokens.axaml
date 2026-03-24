@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+    <Thickness x:Key="DefaultButtonContentMargin">24,14,24,14</Thickness>
+</ResourceDictionary>
