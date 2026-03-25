@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+    <Design.PreviewWith>
+        <controls:OutlineButton />
+    </Design.PreviewWith>
+
+    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:OutlineButton}" TargetType="controls:OutlineButton">
+        <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultOutlineButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource DefaultOutlineButtonBorderThickness}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border 
+                    x:Name="PART_ButtonContainerBorder"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{TemplateBinding CornerRadius}" 
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}">
+                    <ContentPresenter 
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Foreground="{markupExtensions:ContrastBrush BaseColor={Binding Background, RelativeSource={RelativeSource TemplatedParent}}}"
+                        Content="{TemplateBinding Content}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledHoveredBackground}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledPressedBackground}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonDisabledBackground}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -18,6 +18,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
+using Avalonia.Data;
+using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Pixeval.Controls.Ardelle.Tokens;
@@ -26,10 +28,19 @@ namespace Pixeval.Controls.Ardelle.MarkupExtensions;
 
 public class ContrastBrushExtension : MarkupExtension
 {
-    public required ISolidColorBrush BaseColor { get; set; }
+    public required object? BaseColor { get; set; }
     
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        return BaseColor.Color.Palette.OnBaseline;
+        switch (BaseColor)
+        {
+            case Binding binding:
+                binding.Converter = new FuncValueConverter<object, SolidColorBrush>(brush => ((ISolidColorBrush) brush!).Color.Palette.OnBaseline);
+                return binding;
+            case ISolidColorBrush scb:
+                return scb.Color.Palette.OnBaseline;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(BaseColor));
+        }
     }
 }

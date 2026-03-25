@@ -8,13 +8,16 @@
 
     <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:Button}" TargetType="controls:Button">
         <Setter Property="Background" Value="{StaticResource DefaultButtonEnabledBackground}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border 
                     x:Name="PART_ButtonContainerBorder"
                     Background="{TemplateBinding Background}"
                     CornerRadius="{TemplateBinding CornerRadius}" 
-                    BorderBrush="Transparent"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
                     Padding="{TemplateBinding Padding}">
                     <ContentPresenter 
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"

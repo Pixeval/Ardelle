@@ -3,4 +3,10 @@
     <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
     <Thickness x:Key="DefaultButtonContentMargin">24,14,24,14</Thickness>
+    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">White</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#F1F1EF</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#F4F4F5</SolidColorBrush>
+    <Thickness x:Key="DefaultOutlineButtonBorderThickness">1</Thickness>
+    <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#E5E4E2</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#E4E4E7</SolidColorBrush>
 </ResourceDictionary>
