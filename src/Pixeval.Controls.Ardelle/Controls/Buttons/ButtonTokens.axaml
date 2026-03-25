@@ -9,4 +9,8 @@
     <Thickness x:Key="DefaultOutlineButtonBorderThickness">1</Thickness>
     <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#E5E4E2</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#E4E4E7</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#F1F1EF</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#F1F1EF</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#F2F5F9</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#E3E8EF</SolidColorBrush>
 </ResourceDictionary>

@@ -5,5 +5,6 @@
         <ResourceInclude Source="ButtonTokens.axaml" />
         <ResourceInclude Source="BaseButtonTheme.axaml" />
         <ResourceInclude Source="OutlineButton.axaml" />
+        <ResourceInclude Source="GhostButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

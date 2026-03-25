@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
         xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+    <controls:ColorBlendConverter x:Key="ColorBlendConverter" />
     <Design.PreviewWith>
         <controls:OutlineButton />
     </Design.PreviewWith>
@@ -13,7 +14,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Border 
-                    x:Name="PART_ButtonContainerBorder"
+                    x:Name="PART_GeneralButtonContainerBorder"
                     Background="{TemplateBinding Background}"
                     CornerRadius="{TemplateBinding CornerRadius}" 
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -22,7 +23,7 @@
                     <ContentPresenter 
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Foreground="{markupExtensions:ContrastBrush BaseColor={Binding Background, RelativeSource={RelativeSource TemplatedParent}}}"
+                        Foreground="{TemplateBinding Foreground}"
                         Content="{TemplateBinding Content}" />
                 </Border>
             </ControlTemplate>
@@ -35,6 +36,7 @@
         </Style>
         <Style Selector="^:disabled">
             <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonDisabledBackground}" />
+            <Setter Property="Foreground" Value="{markupExtensions:ShiftedColorBrush BaseColor={Binding Foreground, Mode=OneTime, RelativeSource={RelativeSource Self}}, Index=4}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

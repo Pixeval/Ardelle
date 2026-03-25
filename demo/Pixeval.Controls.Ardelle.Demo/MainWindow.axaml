@@ -8,8 +8,8 @@
         x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
         Title="Pixeval.Controls.Ardelle.Demo">
     <Grid RowDefinitions="Auto,*" RowSpacing="16" Margin="24">
-        <buttons:OutlineButton IsEnabled="False">
+        <buttons:GhostButton IsEnabled="True">
              <TextBlock>Hello World!</TextBlock>
-        </buttons:OutlineButton>
+        </buttons:GhostButton>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <ControlTheme x:Key="BaseButtonTheme" TargetType="Button">
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
         <Setter Property="Padding" Value="{StaticResource DefaultButtonContentMargin}" />
@@ -8,8 +9,9 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="{markupExtensions:ContrastBrush BaseColor={Binding Background, RelativeSource={RelativeSource Self}}}" />
         
-        <Style Selector="^:disabled/template/Border#PART_ButtonContainerBorder">
+        <Style Selector="^:disabled/template/Border#PART_GeneralButtonContainerBorder">
             <Setter Property="Cursor" Value="Arrow" />
         </Style>
     </ControlTheme>

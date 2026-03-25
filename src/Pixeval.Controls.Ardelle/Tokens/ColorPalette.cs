@@ -77,5 +77,14 @@ public static class ColorPaletteExtensions
         public ColorPalette Palette => new(color);
         
         public SolidColorBrush Brush => new(color);
+        
+        public Color Blend(Color maskColor, double amount)
+        {
+            var r = (byte)(maskColor.R * amount + color.R * (1 - amount));
+            var g = (byte)(maskColor.G * amount + color.G * (1 - amount));
+            var b = (byte)(maskColor.B * amount + color.B * (1 - amount));
+
+            return Color.FromArgb(255, r, g, b);
+        }
     }
 }

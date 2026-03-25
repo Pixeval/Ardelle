@@ -18,6 +18,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
+using Avalonia.Data;
+using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Pixeval.Controls.Ardelle.Tokens;
@@ -26,17 +28,31 @@ namespace Pixeval.Controls.Ardelle.MarkupExtensions;
 
 public class ShiftedColorBrushExtension : MarkupExtension
 {
-    public required ISolidColorBrush BaseColor { get; set; }
+    public required object? BaseColor { get; set; }
     
     public required int Index { get; set; }
     
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
+        switch (BaseColor)
+        {
+            case Binding binding:
+                binding.Converter = new FuncValueConverter<object, ISolidColorBrush>(brush => Convert((ISolidColorBrush) brush!));
+                return binding;
+            case ISolidColorBrush brush:
+                return Convert(brush);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(BaseColor));
+        }
+    }
+
+    private ISolidColorBrush Convert(ISolidColorBrush brush)
+    {
         return Index switch
         {
-            0 => BaseColor,
-            >= -5 and < 0 => BaseColor.Color.Palette.Dimmed[Index + 5].original,
-            > 0 and <= 5 => BaseColor.Color.Palette.Brightened[Index - 1].original,
+            0 => brush,
+            >= -5 and < 0 => brush.Color.Palette.Dimmed[Index + 5].original,
+            > 0 and <= 5 => brush.Color.Palette.Brightened[Index - 1].original,
             _ => throw new ArgumentOutOfRangeException(nameof(Index), "Index must be between 0 and 10 inclusive.")
         };
     }
