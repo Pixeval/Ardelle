@@ -6,7 +6,7 @@ namespace Pixeval.Controls.Ardelle.Controls.Card;
 public class Card : ContentControl
 {
     public static readonly StyledProperty<bool> BrutalizedProperty =
-        AvaloniaProperty.Register<Card, bool>(nameof(CornerRadius));
+        AvaloniaProperty.Register<Card, bool>(nameof(Brutalized));
     
     public bool Brutalized
     {

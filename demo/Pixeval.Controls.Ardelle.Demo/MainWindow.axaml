@@ -3,13 +3,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:buttons="clr-namespace:Pixeval.Controls.Ardelle.Controls.Buttons;assembly=Pixeval.Controls.Ardelle"
+        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions;assembly=Pixeval.Controls.Ardelle"
         x:CompileBindings="False"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
         Title="Pixeval.Controls.Ardelle.Demo">
     <Grid RowDefinitions="Auto,*" RowSpacing="16" Margin="24">
-        <buttons:GhostButton IsEnabled="True">
-             <TextBlock>Hello World!</TextBlock>
-        </buttons:GhostButton>
+        <buttons:Button IsEnabled="True" Content="Add" />
     </Grid>
 </Window>

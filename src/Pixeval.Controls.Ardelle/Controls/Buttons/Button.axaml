@@ -26,18 +26,5 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^:disabled/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="Background" Value="{StaticResource DefaultButtonDisabledBackground}" />
-            <Setter Property="Cursor" Value="Arrow" />
-        </Style>
-        
-        <Style Selector="^:disabled">
-            <Setter Property="Foreground" Value="{markupExtensions:ContrastBrush BaseColor={StaticResource DefaultButtonDisabledBackground}}" />
-            <Setter Property="Cursor" Value="Arrow" />
-        </Style>
-        
-        <Style Selector="^:pressed/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="Background" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultButtonEnabledBackground}, Index=2}" />
-        </Style>
     </ControlTheme>
 </ResourceDictionary>

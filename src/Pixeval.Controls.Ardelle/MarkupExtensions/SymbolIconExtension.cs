@@ -1,0 +1,53 @@
+using Avalonia;
+using Avalonia.Controls.Primitives;
+using Avalonia.Data;
+using Avalonia.Markup.Xaml;
+using Avalonia.Media;
+using Avalonia.Threading;
+using FluentIcons.Avalonia;
+using FluentIcons.Common;
+
+namespace Pixeval.Controls.Ardelle.MarkupExtensions;
+
+public sealed class SymbolIconExtension
+{
+    public SymbolIconExtension() { }
+    public SymbolIconExtension(Symbol symbol)
+    {
+        Symbol = symbol;
+    }
+
+    [ConstructorArgument("symbol")]
+    public Symbol? Symbol { get; set; }
+    public IconVariant? IconVariant { get; set; }
+    public double? FontSize { get; set; }
+    public IBrush? Foreground { get; set; }
+
+    public SymbolIcon ProvideValue(IServiceProvider serviceProvider)
+    {
+        var icon = new SymbolIcon();
+
+        if (Symbol.HasValue) icon.Symbol = Symbol.Value;
+        if (IconVariant.HasValue) icon.IconVariant = IconVariant.Value;
+        if (FontSize.HasValue) icon.FontSize = FontSize.Value;
+        if (Foreground is not null) icon.Foreground = Foreground;
+
+        var service = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
+        if (Foreground is null && service?.TargetObject is TemplatedControl sourceControl)
+        {
+            icon.Bind(TemplatedControl.ForegroundProperty, new Binding
+            {
+                Source = sourceControl,
+                Path = nameof(TemplatedControl.Foreground),
+                Mode = BindingMode.OneWay
+            });
+        }
+
+        if (service?.TargetObject is Visual source)
+        {
+            icon.Bind(Visual.FlowDirectionProperty, source.GetBindingObservable(Visual.FlowDirectionProperty));
+        }
+
+        return icon;
+    }
+}

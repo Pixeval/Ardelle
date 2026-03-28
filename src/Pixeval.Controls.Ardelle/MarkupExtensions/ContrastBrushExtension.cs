@@ -18,6 +18,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
+using System.Globalization;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
@@ -35,7 +36,17 @@ public class ContrastBrushExtension : MarkupExtension
         switch (BaseColor)
         {
             case Binding binding:
-                binding.Converter = new FuncValueConverter<object, SolidColorBrush>(brush => ((ISolidColorBrush) brush!).Color.Palette.OnBaseline);
+                var previousConverter = binding.Converter;
+                binding.Converter = new FuncValueConverter<object?, SolidColorBrush?>(value =>
+                {
+                    var converted = previousConverter is null
+                        ? value
+                        : previousConverter.Convert(value, typeof(object), binding.ConverterParameter, CultureInfo.InvariantCulture);
+
+                    return converted is ISolidColorBrush brush
+                        ? brush.Color.Palette.OnBaseline
+                        : null;
+                });
                 return binding;
             case ISolidColorBrush scb:
                 return scb.Color.Palette.OnBaseline;

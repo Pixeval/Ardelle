@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
     <Thickness x:Key="DefaultButtonContentMargin">24,14,24,14</Thickness>
@@ -13,4 +14,7 @@
     <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#F1F1EF</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#F2F5F9</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#E3E8EF</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#1A1918</SolidColorBrush>
+    <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+    <system:Double x:Key="DefaultIconButtonIconContentSpacing">8</system:Double>
 </ResourceDictionary>

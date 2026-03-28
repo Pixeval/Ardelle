@@ -18,6 +18,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
+using System.Globalization;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
@@ -37,7 +38,17 @@ public class ShiftedColorBrushExtension : MarkupExtension
         switch (BaseColor)
         {
             case Binding binding:
-                binding.Converter = new FuncValueConverter<object, ISolidColorBrush>(brush => Convert((ISolidColorBrush) brush!));
+                var previousConverter = binding.Converter;
+                binding.Converter = new FuncValueConverter<object?, ISolidColorBrush?>(value =>
+                {
+                    var converted = previousConverter is null
+                        ? value
+                        : previousConverter.Convert(value, typeof(object), binding.ConverterParameter, CultureInfo.InvariantCulture);
+
+                    return converted is ISolidColorBrush brush
+                        ? Convert(brush)
+                        : null;
+                });
                 return binding;
             case ISolidColorBrush brush:
                 return Convert(brush);

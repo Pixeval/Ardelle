@@ -1,0 +1,47 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions"
+        xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia">
+    <Design.PreviewWith>
+        <controls:IconButton />
+    </Design.PreviewWith>
+
+    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:IconButton}" TargetType="controls:IconButton">
+        <Setter Property="Background" Value="{StaticResource DefaultIconButtonEnabledBackground}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Style Selector="^ /template/ avalonia|FluentIcon">
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style Selector="^ /template/ avalonia|SymbolIcon">
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border 
+                    x:Name="PART_GeneralButtonContainerBorder"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{TemplateBinding CornerRadius}" 
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}">
+                    <StackPanel Orientation="Horizontal" Spacing="{StaticResource DefaultIconButtonIconContentSpacing}">
+                        <Viewbox VerticalAlignment="Center"
+                                 Width="{TemplateBinding FontSize}"
+                                 Height="{TemplateBinding FontSize}" 
+                                 Stretch="Uniform"
+                                 StretchDirection="Both">
+                            <ContentPresenter Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Icon}" />
+                        </Viewbox>
+                        <ContentPresenter FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Content}">
+                            <ContentPresenter.RenderTransform>
+                                <TranslateTransform X="0" Y="0.6" />
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
