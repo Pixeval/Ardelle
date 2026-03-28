@@ -1,16 +1,19 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
+using Pixeval.Controls.Ardelle.AttachedProperties;
 
 namespace Pixeval.Controls.Ardelle.Controls.Card;
 
-public class Card : ContentControl
+[TemplatePart("PART_BackgroundBorder", typeof(Border))]
+public class Card : ContentControl, IBrutalizable
 {
-    public static readonly StyledProperty<bool> BrutalizedProperty =
-        AvaloniaProperty.Register<Card, bool>(nameof(Brutalized));
-    
-    public bool Brutalized
+    public Border? Border { get; private set; }
+
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
-        get => GetValue(BrutalizedProperty);
-        set => SetValue(BrutalizedProperty, value);
+        base.OnApplyTemplate(e);
+        Border = e.NameScope.Find<Border>("PART_BackgroundBorder")!;
     }
 }

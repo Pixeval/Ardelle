@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
-        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions"
         xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia">
     <Design.PreviewWith>
         <controls:IconButton />

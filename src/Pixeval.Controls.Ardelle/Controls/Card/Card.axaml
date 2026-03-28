@@ -1,17 +1,16 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Card"
-        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions"
+        xmlns:attachedProperties="clr-namespace:Pixeval.Controls.Ardelle.AttachedProperties">
     <Design.PreviewWith>
-        <controls:Card Brutalized="True" Width="500" Height="300" Background="{markupExtensions:ColorToken Name=Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <controls:Card attachedProperties:Brutalization.IsBrutalized="True" Width="500" Height="300" Background="{markupExtensions:ColorToken Name=Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Background="Red" Text="Brutalized Card" FontSize="24" Foreground="{markupExtensions:ColorToken Name=OnSecondary}" />
         </controls:Card>
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
-        <Setter Property="Background">
-            <SolidColorBrush>White</SolidColorBrush>
-        </Setter>
+        <Setter Property="Background" Value="{StaticResource DefaultCardBackground}" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultCardBorderBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -37,10 +36,5 @@
                 </Grid>
             </ControlTemplate>
         </Setter>
-        
-        <Style Selector="^[Brutalized=True]/template/Border#PART_BackgroundBorder">
-            <Setter Property="BorderThickness" Value="{StaticResource BrutalizedCardBorderThickness}" />
-            <Setter Property="BoxShadow" Value="{StaticResource BrutalizedCardBoxShadow}" />
-        </Style>
     </ControlTheme>
 </ResourceDictionary>
