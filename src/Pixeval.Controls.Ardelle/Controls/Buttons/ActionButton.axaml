@@ -21,11 +21,12 @@
                         <Border 
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
+                            UseLayoutRounding="True"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Background="{TemplateBinding BorderBrush}">
                             <Border.RenderTransform>
-                                <TranslateTransform X="{StaticResource ActionButtonBrutalizationShadowOffset}" 
-                                                    Y="{StaticResource ActionButtonBrutalizationShadowOffset}" />
+                                <TranslateTransform X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" 
+                                                    Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
                             </Border.RenderTransform>
                         </Border>
                         <Border
@@ -35,10 +36,11 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             RenderTransform="translate(0, 0)"
+                            UseLayoutRounding="True"
                             Padding="{TemplateBinding Padding}">
                             <Border.Transitions>
                                 <Transitions>
-                                    <TransformOperationsTransition Duration="0:0:0.25" Property="RenderTransform">
+                                    <TransformOperationsTransition Duration="0:0:0.2" Property="RenderTransform">
                                         <TransformOperationsTransition.Easing>
                                             <CubicEaseOut />
                                         </TransformOperationsTransition.Easing>
@@ -55,7 +57,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="RenderTransform" Value="translate(3px, 4px)" />
+            <Setter Property="RenderTransform" Value="{StaticResource DefaultActionButtonHoverTransform}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

@@ -17,5 +17,8 @@
     <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#1A1918</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#C5C5C4</SolidColorBrush>
     <system:Double x:Key="DefaultIconButtonIconContentSpacing">8</system:Double>
-    <system:Double x:Key="ActionButtonBrutalizationShadowOffset">3</system:Double>
+    <system:Double x:Key="DefaultActionButtonBrutalizationShadowOffset">4</system:Double>
+    <TransformOperations x:Key="DefaultActionButtonHoverTransform">
+        translate(4px, 4px)
+    </TransformOperations>
 </ResourceDictionary>
