@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+                    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions"
+                    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia">
+    <Design.PreviewWith>
+        <controls:ActionButton />
+    </Design.PreviewWith>
+
+    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:ActionIconButton}" TargetType="controls:ActionIconButton">
+        <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="999" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Style Selector="^:disabled">
+            <Setter Property="BorderBrush" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultBrutalizationShadowBrush}, Index=2}" />
+        </Style>
+        <Style Selector="^ /template/ avalonia|FluentIcon">
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style Selector="^ /template/ avalonia|SymbolIcon">
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="Transparent" BorderThickness="0" Padding="15">
+                    <Grid>
+                        <Border 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            UseLayoutRounding="True"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Background="{TemplateBinding BorderBrush}">
+                            <Border.RenderTransform>
+                                <TranslateTransform
+                                    X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" 
+                                    Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
+                            </Border.RenderTransform>
+                        </Border>
+                        <Border
+                            x:Name="PART_GeneralButtonContainerBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            RenderTransform="translate(0, 0)"
+                            UseLayoutRounding="True"
+                            Padding="{TemplateBinding Padding}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Duration="0:0:0.2" Property="RenderTransform">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut />
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Border.Transitions>
+                            <StackPanel Orientation="Horizontal" Spacing="{StaticResource DefaultIconButtonIconContentSpacing}">
+                                <Viewbox VerticalAlignment="Center"
+                                         Width="{TemplateBinding FontSize}"
+                                         Height="{TemplateBinding FontSize}" 
+                                         Stretch="Uniform"
+                                         StretchDirection="Both">
+                                    <ContentPresenter Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Icon}" />
+                                </Viewbox>
+                                <ContentPresenter
+                                    FontSize="{TemplateBinding FontSize}"
+                                    VerticalAlignment="Center" 
+                                    Foreground="{TemplateBinding Foreground}" 
+                                    Content="{TemplateBinding Content}">
+                                </ContentPresenter>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover/template/Border#PART_GeneralButtonContainerBorder">
+            <Setter Property="RenderTransform" Value="{StaticResource DefaultActionButtonHoverTransform}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -11,6 +11,6 @@
         x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
         Title="Pixeval.Controls.Ardelle.Demo">
     <Grid RowDefinitions="Auto,*" RowSpacing="16" Margin="24">
-        <buttons:ActionButton IsEnabled="True" Content="Press me!" />
+        <buttons:ActionIconButton IsEnabled="True" Icon="{markupExtensions:SymbolIcon Save}" Content="Press me!" />
     </Grid>
 </Window>

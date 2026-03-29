@@ -8,5 +8,6 @@
         <ResourceInclude Source="GhostButton.axaml" />
         <ResourceInclude Source="IconButton.axaml" />
         <ResourceInclude Source="ActionButton.axaml" />
+        <ResourceInclude Source="ActionIconButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
