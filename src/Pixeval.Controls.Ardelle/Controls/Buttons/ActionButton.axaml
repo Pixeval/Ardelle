@@ -1,16 +1,61 @@
-<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons">
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+                    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <Design.PreviewWith>
         <controls:ActionButton />
     </Design.PreviewWith>
 
-    <Style Selector="controls|ActionButton">
-        <!-- Set Defaults -->
+    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:ActionButton}" TargetType="controls:ActionButton">
+        <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="999" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Style Selector="^:disabled">
+            <Setter Property="BorderBrush" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultBrutalizationShadowBrush}, Index=2}" />
+        </Style>
         <Setter Property="Template">
             <ControlTemplate>
-                <TextBlock Text="Templated Control" />
+                <Border BorderBrush="Transparent" BorderThickness="0" Padding="15">
+                    <Grid>
+                        <Border 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Background="{TemplateBinding BorderBrush}">
+                            <Border.RenderTransform>
+                                <TranslateTransform X="{StaticResource ActionButtonBrutalizationShadowOffset}" 
+                                                    Y="{StaticResource ActionButtonBrutalizationShadowOffset}" />
+                            </Border.RenderTransform>
+                        </Border>
+                        <Border
+                            x:Name="PART_GeneralButtonContainerBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            RenderTransform="translate(0, 0)"
+                            Padding="{TemplateBinding Padding}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Duration="0:0:0.25" Property="RenderTransform">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut />
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Border.Transitions>
+                            <ContentPresenter 
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Grid>
+                </Border>
             </ControlTemplate>
         </Setter>
-    </Style>
-</Styles>
+        <Style Selector="^:pointerover/template/Border#PART_GeneralButtonContainerBorder">
+            <Setter Property="RenderTransform" Value="translate(3px, 4px)" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

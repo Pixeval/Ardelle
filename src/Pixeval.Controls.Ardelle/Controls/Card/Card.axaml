@@ -18,20 +18,23 @@
         
         <Setter Property="Template">
             <ControlTemplate TargetType="controls:Card">
-                <Grid Background="Transparent" Margin="{StaticResource CardContainerGridMargin}">
+                <Grid Background="Transparent" 
+                      Margin="{StaticResource CardContainerGridMargin}">
                     <Border
                         x:Name="PART_BackgroundBorder"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{StaticResource DefaultCardBorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                        
-                        <ContentPresenter
-                            x:Name="PART_ContentPresenter"
-                            Margin="{TemplateBinding Padding}" 
-                            Content="{TemplateBinding Content}" 
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Border CornerRadius="{TemplateBinding CornerRadius}"
+                                ClipToBounds="True">
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                Margin="{TemplateBinding Padding}" 
+                                Content="{TemplateBinding Content}" 
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
                     </Border>
                 </Grid>
             </ControlTemplate>

@@ -5,4 +5,5 @@
   <Color x:Key="Pixeval.Color.Tertiary">#8364CE</Color>
   <Color x:Key="Pixeval.Color.Neutral">#FDFCFA</Color>
   <Color x:Key="Pixeval.Color.Error">#FF0033</Color>
+  <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#1A1918</SolidColorBrush>
 </ResourceDictionary>

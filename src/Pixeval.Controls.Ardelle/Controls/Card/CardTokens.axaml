@@ -2,9 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <SolidColorBrush x:Key="DefaultCardBackground">#FDFCFA</SolidColorBrush>
-    <Thickness x:Key="CardContainerGridMargin">8</Thickness>
-    <BoxShadows x:Key="BrutalizedCardBoxShadow">8 8 0 0 #1A1918</BoxShadows>
+    <Thickness x:Key="CardContainerGridMargin">5</Thickness>
     <SolidColorBrush x:Key="DefaultCardBorderBrush">#E5E4E2</SolidColorBrush>
     <Thickness x:Key="DefaultCardBorderThickness">1</Thickness>
-    <Thickness x:Key="BrutalizedCardBorderThickness">0</Thickness>
 </ResourceDictionary>

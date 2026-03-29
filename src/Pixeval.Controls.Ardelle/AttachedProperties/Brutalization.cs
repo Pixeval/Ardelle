@@ -13,6 +13,11 @@ public interface IBrutalizable
 
 public class Brutalization : AvaloniaObject
 {
+    private static readonly SolidColorBrush _defaultBrutalizationShadowColor =
+        Application.Current!.TryFindResource("DefaultBrutalizationShadowBrush", out var brush)
+            ? (brush as SolidColorBrush ?? new SolidColorBrush(Colors.Black))
+            : new SolidColorBrush(Colors.Black);
+    
     static Brutalization()
     {
         IsBrutalizedProperty.Changed.AddClassHandler<Control>(OnIsBrutalizedChanged);
@@ -25,11 +30,11 @@ public class Brutalization : AvaloniaObject
         AvaloniaProperty.RegisterAttached<Brutalization, Control, BoxShadows>("BrutalizedShadows", defaultValue: new BoxShadows(
             new BoxShadow
             {
-                OffsetX = 8,
-                OffsetY = 8,
+                OffsetX = 10,
+                OffsetY = 12,
                 Blur = 0,
                 Spread = 0,
-                Color = Color.Parse("#1A1918")
+                Color = _defaultBrutalizationShadowColor.Color
             }));
     
     public static void SetIsBrutalized(AvaloniaObject element, bool value)
@@ -92,7 +97,8 @@ public class Brutalization : AvaloniaObject
             border.BoxShadow = args.NewValue is true ? GetBrutalizedShadows(control) : default;
             if (args.NewValue is true)
             {
-                border.BorderThickness = new Thickness(0);
+                border.BorderThickness = new Thickness(2);
+                border.BorderBrush = _defaultBrutalizationShadowColor;
             }
             else
             {

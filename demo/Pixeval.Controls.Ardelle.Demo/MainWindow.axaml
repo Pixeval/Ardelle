@@ -11,8 +11,6 @@
         x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
         Title="Pixeval.Controls.Ardelle.Demo">
     <Grid RowDefinitions="Auto,*" RowSpacing="16" Margin="24">
-        <card:Card attachedProperties:Brutalization.IsBrutalized="True" Width="500" Height="300" Background="{markupExtensions:ColorToken Name=Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Background="Red" Text="Brutalized Card" FontSize="24" Foreground="{markupExtensions:ColorToken Name=OnSecondary}" />
-        </card:Card>
+        <buttons:ActionButton IsEnabled="True" Content="Press me!" />
     </Grid>
 </Window>
