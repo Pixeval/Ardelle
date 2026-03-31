@@ -29,9 +29,18 @@ public class ActionIconButton : AButton
     public static readonly StyledProperty<IconElement> IconProperty =
         AvaloniaProperty.Register<IconButton, IconElement>(nameof(Icon));
 
+    public static readonly StyledProperty<bool> IsLabelCollapsedProperty =
+        AvaloniaProperty.Register<ActionIconButton, bool>(nameof(IsLabelCollapsed), defaultValue: false);
+    
     public IconElement Icon
     {
         get => GetValue(IconProperty);
         set => SetValue(IconProperty, value);
+    }
+    
+    public bool IsLabelCollapsed
+    {
+        get => GetValue(IsLabelCollapsedProperty);
+        set => SetValue(IsLabelCollapsedProperty, value);
     }
 }

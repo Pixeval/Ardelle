@@ -12,6 +12,9 @@
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="999" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Style Selector="^[IsLabelCollapsed=true]">
+            <Setter Property="Padding" Value="14" />
+        </Style>
         <Style Selector="^:disabled">
             <Setter Property="BorderBrush" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultBrutalizationShadowBrush}, Index=2}" />
         </Style>
@@ -64,6 +67,7 @@
                                     <ContentPresenter Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Icon}" />
                                 </Viewbox>
                                 <ContentPresenter
+                                    IsVisible="{Binding !IsLabelCollapsed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                     FontSize="{TemplateBinding FontSize}"
                                     VerticalAlignment="Center" 
                                     Foreground="{TemplateBinding Foreground}" 

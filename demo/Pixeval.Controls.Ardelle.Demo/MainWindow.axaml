@@ -5,12 +5,11 @@
         xmlns:buttons="clr-namespace:Pixeval.Controls.Ardelle.Controls.Buttons;assembly=Pixeval.Controls.Ardelle"
         xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions;assembly=Pixeval.Controls.Ardelle"
         xmlns:card="clr-namespace:Pixeval.Controls.Ardelle.Controls.Card;assembly=Pixeval.Controls.Ardelle"
-        xmlns:attachedProperties="clr-namespace:Pixeval.Controls.Ardelle.AttachedProperties;assembly=Pixeval.Controls.Ardelle"
         x:CompileBindings="False"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
         Title="Pixeval.Controls.Ardelle.Demo">
-    <Grid RowDefinitions="Auto,*" RowSpacing="16" Margin="24">
-        <buttons:ActionIconButton IsEnabled="True" Icon="{markupExtensions:SymbolIcon Save}" Content="Press me!" />
+    <Grid>
+        <buttons:ActionIconButton IsEnabled="True" Icon="{markupExtensions:SymbolIcon Save}" Content="Press Me!" IsLabelCollapsed="True" />
     </Grid>
 </Window>
