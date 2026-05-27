@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
 
+    <markupExtensions:KeyGestureInputGestureConverter x:Key="KeyGestureInputGestureConverter" />
+
     <Design.PreviewWith>
         <Border Padding="20" Background="White" Width="300">
             <StackPanel Spacing="10">
@@ -50,6 +52,8 @@
                         <Popup
                             x:Name="PART_Popup"
                             IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
+                            InheritsTransform="True"
+                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="BottomEdgeAlignedLeft"
                             Focusable="False">
                             <Grid Background="Transparent">
@@ -247,6 +251,8 @@
                             x:Name="PART_Popup"
                             Grid.Column="0"
                             IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
+                            InheritsTransform="True"
+                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="RightEdgeAlignedTop"
                             Focusable="False">
                             <Grid Background="Transparent">

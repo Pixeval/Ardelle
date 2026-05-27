@@ -15,5 +15,6 @@
         <ResourceInclude Source="../Controls/ToolTip/ToolTip.axaml" />
         <ResourceInclude Source="../Controls/ListBox/ListBox.axaml" />
         <ResourceInclude Source="../Controls/Flyout/Flyout.axaml" />
+        <ResourceInclude Source="../Controls/CommandBar/CommandBar.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
