@@ -1,0 +1,207 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White">
+            <StackPanel Spacing="20" Width="200">
+                <ToggleSwitch Content="Mute Sound" />
+                <ToggleSwitch Content="Wi-Fi" IsChecked="True" />
+                <ToggleSwitch Content="Bluetooth" IsEnabled="False" />
+                <ToggleSwitch Content="NFC" IsEnabled="False" IsChecked="True" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="KnobTransitions">
+            <Transitions>
+                <DoubleTransition
+                    Easing="CubicEaseOut"
+                    Property="Canvas.Left"
+                    Duration="0:0:0.25" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Transparent" RowDefinitions="Auto,*">
+                    <!-- Header/Content Presenter -->
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Grid.Row="0"
+                        VerticalAlignment="Top"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Margin="0,0,0,6"
+                        Foreground="{TemplateBinding Foreground}"
+                        FontWeight="Bold" />
+
+                    <Grid
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="6" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="12" MaxWidth="12" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid
+                            x:Name="SwitchAreaGrid"
+                            Grid.RowSpan="3"
+                            Grid.ColumnSpan="3"
+                            Background="Transparent"
+                            Margin="0,5"
+                            TemplatedControl.IsTemplateFocusTarget="True" />
+
+                        <!-- On/Off Content presenter on the right side of the track -->
+                        <ContentPresenter
+                            x:Name="PART_OffContentPresenter"
+                            Grid.RowSpan="3"
+                            Grid.Column="2"
+                            Margin="6,0,0,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding OffContent}"
+                            ContentTemplate="{TemplateBinding OffContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}" />
+
+                        <ContentPresenter
+                            x:Name="PART_OnContentPresenter"
+                            Grid.RowSpan="3"
+                            Grid.Column="2"
+                            Margin="6,0,0,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding OnContent}"
+                            ContentTemplate="{TemplateBinding OnContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}" />
+
+                        <!-- Neobrutalism Shadow for Track (Pill-shaped offset shadow block) -->
+                        <Border
+                            Grid.Row="1"
+                            Width="48"
+                            Height="24"
+                            Margin="2,2,0,0"
+                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            CornerRadius="12" />
+
+                        <!-- Off Track State -->
+                        <Border
+                            x:Name="OuterBorder"
+                            Grid.Row="1"
+                            Width="48"
+                            Height="24"
+                            Background="White"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="2"
+                            CornerRadius="12" />
+
+                        <!-- On Track State (with opacity fade) -->
+                        <Border
+                            x:Name="SwitchKnobBounds"
+                            Grid.Row="1"
+                            Width="48"
+                            Height="24"
+                            Background="{markupExtensions:ColorToken Name=Secondary}"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="2"
+                            CornerRadius="12"
+                            Opacity="0">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+
+                        <!-- Moving Knob Container (Canvas is 28px wide to accommodate move space of 24px) -->
+                        <!-- Canvas is aligned to Left, but its bounds and offset can move -->
+                        <Canvas
+                            x:Name="PART_SwitchKnob"
+                            Grid.Row="1"
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Left">
+
+                            <!-- Moving Knob with its own Neobrutalism accent styles -->
+                            <Grid x:Name="PART_MovingKnobs" Width="24" Height="24">
+                                <Border
+                                    x:Name="SwitchKnobShadow"
+                                    Width="18"
+                                    Height="18"
+                                    Margin="2,2,0,0"
+                                    Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                    CornerRadius="999"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+
+                                <Border
+                                    x:Name="SwitchKnobOff"
+                                    Width="18"
+                                    Height="18"
+                                    Background="White"
+                                    BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                    BorderThickness="2"
+                                    CornerRadius="999"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <Border.Transitions>
+                                        <Transitions>
+                                            <BrushTransition Property="Background" Duration="0:0:0.1" />
+                                        </Transitions>
+                                    </Border.Transitions>
+                                </Border>
+
+                                <Border
+                                    x:Name="SwitchKnobOn"
+                                    Width="18"
+                                    Height="18"
+                                    Background="{markupExtensions:ColorToken Name=Primary}"
+                                    BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                    BorderThickness="2"
+                                    CornerRadius="999"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Opacity="0">
+                                    <Border.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                                        </Transitions>
+                                    </Border.Transitions>
+                                </Border>
+                            </Grid>
+                        </Canvas>
+
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#SwitchKnobBounds">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ Border#SwitchKnobOn">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.6" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

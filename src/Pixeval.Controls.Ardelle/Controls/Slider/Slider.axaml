@@ -1,0 +1,262 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="using:System"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White" Width="400" Height="400">
+            <StackPanel Spacing="30">
+                <Slider Value="30" />
+                <Slider Value="60" IsEnabled="False" />
+                <Grid ColumnDefinitions="*,*">
+                    <Slider Value="40" Orientation="Vertical" Height="150" Grid.Column="0" />
+                    <Slider Value="70" Orientation="Vertical" Height="150" Grid.Column="1" IsEnabled="False" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Custom Slider repeat button templates for Neobrutalism track styling -->
+    <ControlTheme x:Key="ArdelleSliderHorizontalDecreaseButton" TargetType="RepeatButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Name="FocusTarget" Margin="0,-10" Background="Transparent" />
+                    <Border Name="TrackBackground"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="2,2,0,2"
+                            CornerRadius="6,0,0,6"
+                            Height="12"
+                            VerticalAlignment="Center"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ArdelleSliderHorizontalIncreaseButton" TargetType="RepeatButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Name="FocusTarget" Margin="0,-10" Background="Transparent" />
+                    <Border Name="TrackBackground"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="0,2,2,2"
+                            CornerRadius="0,6,6,0"
+                            Height="12"
+                            VerticalAlignment="Center"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ArdelleSliderVerticalDecreaseButton" TargetType="RepeatButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Name="FocusTarget" Margin="-10,0" Background="Transparent" />
+                    <Border Name="TrackBackground"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="2,0,2,2"
+                            CornerRadius="0,0,6,6"
+                            Width="12"
+                            HorizontalAlignment="Center"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ArdelleSliderVerticalIncreaseButton" TargetType="RepeatButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Name="FocusTarget" Margin="-10,0" Background="Transparent" />
+                    <Border Name="TrackBackground"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="2,2,2,0"
+                            CornerRadius="6,6,0,0"
+                            Width="12"
+                            HorizontalAlignment="Center"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- Slider Thumb with Offset Shadow inside -->
+    <ControlTheme x:Key="ArdelleSliderThumbTheme" TargetType="Thumb">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <!-- Shadow layer -->
+                    <Border
+                        Width="22"
+                        Height="22"
+                        Margin="2,2,0,0"
+                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                        CornerRadius="999" />
+                    
+                    <!-- Main Knob layer -->
+                    <Border
+                        x:Name="PART_MainThumb"
+                        Width="22"
+                        Height="22"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="999"
+                        RenderTransform="translate(0,0)">
+                        <Border.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#PART_MainThumb">
+            <Setter Property="RenderTransform" Value="translate(1px,1px)" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#PART_MainThumb">
+            <Setter Property="RenderTransform" Value="translate(2px,2px)" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=Secondary}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        
+        <Style Selector="^:horizontal">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <DataValidationErrors>
+                        <Border
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid x:Name="SliderContainer" Margin="{TemplateBinding Padding}" Background="Transparent">
+                                <Grid
+                                    x:Name="HorizontalTemplate"
+                                    MinHeight="36"
+                                    RowDefinitions="Auto"
+                                    ColumnDefinitions="*">
+                                    
+                                    <!-- Thick track shadow block underlay -->
+                                    <Border
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Height="12"
+                                        Margin="2,14,0,10"
+                                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        CornerRadius="6"
+                                        VerticalAlignment="Center" />
+
+                                    <Track
+                                        Name="PART_Track"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Minimum="{TemplateBinding Minimum}"
+                                        Maximum="{TemplateBinding Maximum}"
+                                        Value="{TemplateBinding Value, Mode=TwoWay}"
+                                        IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                                        Orientation="Horizontal">
+                                        <Track.DecreaseButton>
+                                            <RepeatButton
+                                                Name="PART_DecreaseButton"
+                                                Theme="{StaticResource ArdelleSliderHorizontalDecreaseButton}"
+                                                Background="{TemplateBinding Foreground}"
+                                                Focusable="False"/>
+                                        </Track.DecreaseButton>
+                                        <Track.IncreaseButton>
+                                            <RepeatButton
+                                                Name="PART_IncreaseButton"
+                                                Theme="{StaticResource ArdelleSliderHorizontalIncreaseButton}"
+                                                Background="{TemplateBinding Background}"
+                                                Focusable="False"/>
+                                        </Track.IncreaseButton>
+                                        <Thumb
+                                            Name="thumb"
+                                            Background="{markupExtensions:ColorToken Name=Primary}"
+                                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                            BorderThickness="2"
+                                            Theme="{StaticResource ArdelleSliderThumbTheme}" />
+                                    </Track>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataValidationErrors>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:vertical">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <DataValidationErrors>
+                        <Border
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid x:Name="SliderContainer" Margin="{TemplateBinding Padding}" Background="Transparent">
+                                <Grid
+                                    x:Name="VerticalTemplate"
+                                    MinWidth="36"
+                                    ColumnDefinitions="*">
+                                    
+                                    <!-- Thick track shadow block underlay -->
+                                    <Border
+                                        Grid.Column="0"
+                                        Width="12"
+                                        Margin="14,2,10,2"
+                                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        CornerRadius="6"
+                                        HorizontalAlignment="Center" />
+
+                                    <Track
+                                        Name="PART_Track"
+                                        Grid.Column="0"
+                                        Minimum="{TemplateBinding Minimum}"
+                                        Maximum="{TemplateBinding Maximum}"
+                                        Value="{TemplateBinding Value, Mode=TwoWay}"
+                                        IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                                        Orientation="Vertical">
+                                        <Track.DecreaseButton>
+                                            <RepeatButton
+                                                Name="PART_DecreaseButton"
+                                                Theme="{StaticResource ArdelleSliderVerticalDecreaseButton}"
+                                                Background="{TemplateBinding Foreground}"
+                                                Focusable="False"/>
+                                        </Track.DecreaseButton>
+                                        <Track.IncreaseButton>
+                                            <RepeatButton
+                                                Name="PART_IncreaseButton"
+                                                Theme="{StaticResource ArdelleSliderVerticalIncreaseButton}"
+                                                Background="{TemplateBinding Background}"
+                                                Focusable="False"/>
+                                        </Track.IncreaseButton>
+                                        <Thumb
+                                            Name="SliderThumb"
+                                            Background="{markupExtensions:ColorToken Name=Primary}"
+                                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                            BorderThickness="2"
+                                            Theme="{StaticResource ArdelleSliderThumbTheme}" />
+                                    </Track>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataValidationErrors>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.6" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -2,5 +2,10 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="../Controls/Buttons/Includes.axaml" />
         <ResourceInclude Source="../Controls/Card/Includes.axaml" />
+        <ResourceInclude Source="../Controls/CheckBox/CheckBox.axaml" />
+        <ResourceInclude Source="../Controls/RadioButton/RadioButton.axaml" />
+        <ResourceInclude Source="../Controls/ToggleSwitch/ToggleSwitch.axaml" />
+        <ResourceInclude Source="../Controls/Slider/Slider.axaml" />
+        <ResourceInclude Source="../Controls/TextBox/TextBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

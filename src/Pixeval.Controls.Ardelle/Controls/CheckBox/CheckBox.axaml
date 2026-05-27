@@ -1,0 +1,155 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+    
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White">
+            <StackPanel Spacing="20">
+                <CheckBox Content="Unchecked Box" />
+                <CheckBox IsChecked="True" Content="Checked Box" />
+                <CheckBox IsEnabled="False" Content="Disabled Box" />
+                <CheckBox IsEnabled="False" IsChecked="True" Content="Disabled Checked Box" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <StreamGeometry x:Key="NeobrutalismCheckMarkPathData">M 2,7 L 6,11 L 14,2</StreamGeometry>
+
+    <ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+        <Setter Property="Padding" Value="10,0,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="RootGrid" ColumnDefinitions="Auto,*" Background="Transparent">
+                    
+                    <!-- Underlay Solid Shadow for CheckBox (Neobrutalism Style) -->
+                    <Border
+                        Grid.Column="0"
+                        Width="22"
+                        Height="22"
+                        Margin="2,2,0,0"
+                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" />
+
+                    <!-- Main CheckBox Border -->
+                    <Border
+                        x:Name="PART_Border"
+                        Grid.Column="0"
+                        Width="22"
+                        Height="22"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        RenderTransform="translate(0px, 0px)">
+                        <Border.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseOut" />
+                                <BrushTransition Property="Background" Duration="0:0:0.1" />
+                            </Transitions>
+                        </Border.Transitions>
+
+                        <Panel>
+                            <!-- Checked fill accent color panel -->
+                            <Border
+                                x:Name="PART_CheckBackground"
+                                Background="{markupExtensions:ColorToken Name=Secondary}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Opacity="0">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+
+                            <!-- Check Glyph -->
+                            <Path
+                                x:Name="CheckGlyph"
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Stroke="White"
+                                StrokeThickness="3"
+                                StrokeLineCap="Round"
+                                StrokeJoin="Round"
+                                Data="{StaticResource NeobrutalismCheckMarkPathData}"
+                                RenderTransform="scale(0)"
+                                Stretch="Uniform">
+                                <Path.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="BackEaseOut" />
+                                    </Transitions>
+                                </Path.Transitions>
+                            </Path>
+                        </Panel>
+                    </Border>
+
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Grid.Column="1"
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Foreground="{TemplateBinding Foreground}"
+                        RecognizesAccessKey="True" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover Press Behavior for CheckBox: pushes down into the shadow -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="RenderTransform" Value="translate(1px, 1px)" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="RenderTransform" Value="translate(2px, 2px)" />
+        </Style>
+
+        <!-- Checked State -->
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#PART_CheckBackground">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ Path#CheckGlyph">
+                <Setter Property="RenderTransform" Value="scale(1)" />
+            </Style>
+        </Style>
+
+        <!-- Indeterminate State -->
+        <Style Selector="^:indeterminate">
+            <Style Selector="^ /template/ Border#PART_CheckBackground">
+                <Setter Property="Opacity" Value="1" />
+                <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            </Style>
+            <Style Selector="^ /template/ Path#CheckGlyph">
+                <Setter Property="Data" Value="M 3,7 L 11,7" />
+                <Setter Property="RenderTransform" Value="scale(1)" />
+            </Style>
+        </Style>
+
+        <!-- Disabled State -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.6" />
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="Background" Value="#F1F1EF" />
+                <Setter Property="BorderBrush" Value="#C5C5C4" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -4,19 +4,210 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:buttons="clr-namespace:Pixeval.Controls.Ardelle.Controls.Buttons;assembly=Pixeval.Controls.Ardelle"
     xmlns:card="clr-namespace:Pixeval.Controls.Ardelle.Controls.Card;assembly=Pixeval.Controls.Ardelle"
+    xmlns:attachedProperties="clr-namespace:Pixeval.Controls.Ardelle.AttachedProperties;assembly=Pixeval.Controls.Ardelle"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions;assembly=Pixeval.Controls.Ardelle"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:CompileBindings="False"
-    Title="Pixeval.Controls.Ardelle.Demo"
-    mc:Ignorable="d"
-    d:DesignHeight="450"
-    d:DesignWidth="800">
-    <Grid>
-        <buttons:ActionIconButton
-            Content="Press Me!"
-            Icon="{markupExtensions:SymbolIcon Save}"
-            IsEnabled="True"
-            IsLabelCollapsed="True" />
-    </Grid>
+    Title="Pixeval Ardelle Neobrutalism UI Showcase"
+    Background="#F4F4F3"
+    Width="1100"
+    Height="800"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30" Spacing="30">
+            
+            <!-- Header Banner -->
+            <Border 
+                Background="{markupExtensions:ColorToken Name=Primary}"
+                BorderBrush="#1A1918"
+                BorderThickness="3"
+                CornerRadius="16"
+                Padding="30"
+                Margin="0,0,8,8"
+                attachedProperties:Brutalization.IsBrutalized="True"
+                attachedProperties:Brutalization.BrutalizedShadows="8 8 0 0 #1A1918">
+                <StackPanel Spacing="10">
+                    <TextBlock 
+                        FontSize="36" 
+                        FontWeight="Black" 
+                        Foreground="White" 
+                        Text="Ardelle Neobrutalism + Material Gallery" />
+                    <TextBlock 
+                        FontSize="16" 
+                        FontWeight="SemiBold" 
+                        Foreground="White" 
+                        Opacity="0.9" 
+                        Text="精心呈现的混合设计语言库组件展示，融入高对比度、硬阴影、扁平质感与灵动微动效。" />
+                </StackPanel>
+            </Border>
+
+            <!-- Grid Layout of Showcase Panels -->
+            <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                
+                <!-- Section 1: Buttons -->
+                <card:Card 
+                    Margin="10" 
+                    Padding="24"
+                    Background="White"
+                    attachedProperties:Brutalization.IsBrutalized="True"
+                    attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
+                    CornerRadius="12">
+                    <StackPanel Spacing="16">
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Action &amp; Standard Buttons" />
+                        <Separator Height="1" Background="#1A1918" Opacity="0.2" />
+                        
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <StackPanel Margin="10" Spacing="12">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="NEOBRUTALISM ACTIONS" />
+                                <buttons:ActionButton 
+                                    Content="Action Push" 
+                                    Background="{markupExtensions:ColorToken Name=Primary}"/>
+                                <buttons:ActionIconButton 
+                                    Content="Save Action" 
+                                    Icon="{markupExtensions:SymbolIcon Save}" 
+                                    Background="{markupExtensions:ColorToken Name=Secondary}"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="10" Spacing="12">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="STANDARD / OUTLINE" />
+                                <buttons:Button 
+                                    Content="Flat Solid" 
+                                    Background="{markupExtensions:ColorToken Name=Secondary}" />
+                                <buttons:OutlineButton 
+                                    Content="Outline Button" />
+                                <buttons:GhostButton 
+                                    Content="Ghost Button" />
+                            </StackPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </card:Card>
+
+                <!-- Section 2: Cards & Displays -->
+                <card:Card 
+                    Margin="10" 
+                    Padding="24"
+                    Background="White"
+                    attachedProperties:Brutalization.IsBrutalized="True"
+                    attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
+                    CornerRadius="12">
+                    <StackPanel Spacing="16">
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Brutalized Cards" />
+                        <Separator Height="1" Background="#1A1918" Opacity="0.2" />
+                        
+                        <Grid ColumnDefinitions="*,*">
+                            <card:Card 
+                                Grid.Column="0"
+                                Margin="8" 
+                                Padding="15"
+                                Background="{markupExtensions:ColorToken Name=Tertiary}"
+                                attachedProperties:Brutalization.IsBrutalized="True"
+                                attachedProperties:Brutalization.BrutalizedShadows="5 5 0 0 #1A1918"
+                                CornerRadius="8">
+                                <StackPanel Spacing="8">
+                                    <TextBlock FontSize="16" FontWeight="Black" Foreground="White" Text="Tertiary Card" />
+                                    <TextBlock FontSize="12" Foreground="White" TextWrapping="Wrap" Text="具有经典的2px厚黑边框和不带模糊的纯黑直角投影。" />
+                                </StackPanel>
+                            </card:Card>
+
+                            <card:Card 
+                                Grid.Column="1"
+                                Margin="8" 
+                                Padding="15"
+                                Background="{markupExtensions:ColorToken Name=Secondary}"
+                                attachedProperties:Brutalization.IsBrutalized="True"
+                                attachedProperties:Brutalization.BrutalizedShadows="5 5 0 0 #1A1918"
+                                CornerRadius="12">
+                                <StackPanel Spacing="8">
+                                    <TextBlock FontSize="16" FontWeight="Black" Foreground="White" Text="Secondary Card" />
+                                    <TextBlock FontSize="12" Foreground="White" TextWrapping="Wrap" Text="你可以自由修改阴影的偏移及颜色以满足更具冲击力的视觉样式需求。" />
+                                </StackPanel>
+                            </card:Card>
+                        </Grid>
+                    </StackPanel>
+                </card:Card>
+
+                <!-- Section 3: Selection controls (CheckBox, Radio, Switch) -->
+                <card:Card 
+                    Margin="10" 
+                    Padding="24"
+                    Background="White"
+                    attachedProperties:Brutalization.IsBrutalized="True"
+                    attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
+                    CornerRadius="12">
+                    <StackPanel Spacing="16">
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Selection Controls" />
+                        <Separator Height="1" Background="#1A1918" Opacity="0.2" />
+                        
+                        <Grid ColumnDefinitions="*,*,*">
+                            <!-- CheckBoxes -->
+                            <StackPanel Grid.Column="0" Spacing="12">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="CHECKBOX" />
+                                <CheckBox Content="未选中" />
+                                <CheckBox IsChecked="True" Content="选中" />
+                                <CheckBox IsThreeState="True" IsChecked="{x:Null}" Content="不确定" />
+                                <CheckBox IsEnabled="False" Content="禁用" />
+                                <CheckBox IsEnabled="False" IsChecked="True" Content="禁用选中" />
+                            </StackPanel>
+
+                            <!-- RadioButtons -->
+                            <StackPanel Grid.Column="1" Spacing="12">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="RADIO BUTTON" />
+                                <RadioButton Content="单选 A" IsChecked="True" GroupName="DemoGroup" />
+                                <RadioButton Content="单选 B" GroupName="DemoGroup" />
+                                <RadioButton Content="单选 C" GroupName="DemoGroup" />
+                                <RadioButton Content="单选 (禁用)" IsEnabled="False" />
+                                <RadioButton Content="单选 (禁选)" IsEnabled="False" IsChecked="True" />
+                            </StackPanel>
+
+                            <!-- ToggleSwitches -->
+                            <StackPanel Grid.Column="2" Spacing="12">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="TOGGLE SWITCH" />
+                                <ToggleSwitch Content="Wi-Fi" IsChecked="True" />
+                                <ToggleSwitch Content="蓝牙" IsChecked="False" />
+                                <ToggleSwitch Content="游戏模式" IsChecked="True" IsEnabled="False" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </card:Card>
+
+                <!-- Section 4: Sliders & Text Input -->
+                <card:Card 
+                    Margin="10" 
+                    Padding="24"
+                    Background="White"
+                    attachedProperties:Brutalization.IsBrutalized="True"
+                    attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
+                    CornerRadius="12">
+                    <StackPanel Spacing="16">
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Slider &amp; TextBox" />
+                        <Separator Height="1" Background="#1A1918" Opacity="0.2" />
+                        
+                        <Grid ColumnDefinitions="*,*">
+                            <!-- TextBoxes and Sliders -->
+                            <StackPanel Grid.Column="0" Spacing="14" Margin="0,0,10,0">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="TEXT BOX (FOCUS POP-SHADOW)" />
+                                <TextBox PlaceholderText="请输入文本..." />
+                                <TextBox Text="具有新粗体黑框和彩色高亮阴影" />
+                                <TextBox Text="禁用文本框演示" IsEnabled="False" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Spacing="14" Margin="10,0,0,0">
+                                <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="SLIDER (CUSTOM KNOB SHADOW)" />
+                                <Slider Value="40" Minimum="0" Maximum="100" />
+                                <Slider Value="75" Minimum="0" Maximum="100" IsEnabled="False" />
+                                <Grid ColumnDefinitions="*,*" Height="100">
+                                    <Slider Value="50" IsDirectionReversed="True" Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Center"/>
+                                    <Slider Value="80" Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </card:Card>
+
+            </UniformGrid>
+        </StackPanel>
+    </ScrollViewer>
 </Window>
