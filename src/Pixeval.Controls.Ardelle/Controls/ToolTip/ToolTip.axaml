@@ -1,0 +1,51 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White" Width="300">
+            <StackPanel Spacing="10">
+                <ToolTip Content="Brutalist ToolTip" IsOpen="True">
+                    <TextBlock Text="Hover me to see the ToolTip" FontWeight="Bold" />
+                </ToolTip>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+        <Setter Property="Background" Value="#FFFFD0" /> <!-- Light retro yellow background -->
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="8,6" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Transparent">
+                    <Panel Margin="0,0,4,4">
+                        <!-- Thick Solid Shadow Under ToolTip -->
+                        <Border
+                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Margin="4,4,0,0" />
+
+                        <!-- Core content panel -->
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                TextElement.FontWeight="Bold"
+                                TextElement.FontSize="12" />
+                        </Border>
+                    </Panel>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

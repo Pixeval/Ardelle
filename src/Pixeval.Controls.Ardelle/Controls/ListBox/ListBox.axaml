@@ -1,0 +1,105 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White" Width="300">
+            <StackPanel Spacing="10">
+                <ListBox SelectedIndex="0">
+                    <ListBoxItem Content="Item 1" />
+                    <ListBoxItem Content="Item 2" />
+                    <ListBoxItem Content="Item 3" />
+                </ListBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- ListBoxItem Theme -->
+    <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_ItemBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}"
+                    Margin="0,2">
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        FontWeight="Bold" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#PART_ItemBorder">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="Opacity" Value="0.8" />
+            <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+
+        <!-- Selected State -->
+        <Style Selector="^:selected /template/ Border#PART_ItemBorder">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="TextElement.Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+        <Style Selector="^:selected:pointerover /template/ Border#PART_ItemBorder">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="TextElement.Foreground" Value="White" />
+        </Style>
+    </ControlTheme>
+
+    <!-- ListBox Theme -->
+    <ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Transparent">
+                    <Panel Margin="0,0,4,4">
+                        <!-- Neobrutalism shadow block behind ListBox container -->
+                        <Border
+                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Margin="4,4,0,0" />
+
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <ScrollViewer
+                                x:Name="PART_ScrollViewer"
+                                Theme="{StaticResource {x:Type ScrollViewer}}"
+                                HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter
+                                    x:Name="PART_ItemsPresenter"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                    KeyboardNavigation.TabNavigation="Continue" />
+                            </ScrollViewer>
+                        </Border>
+                    </Panel>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

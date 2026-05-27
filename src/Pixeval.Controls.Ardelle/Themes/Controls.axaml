@@ -11,5 +11,9 @@
         <ResourceInclude Source="../Controls/ComboBox/ComboBox.axaml" />
         <ResourceInclude Source="../Controls/Expander/Expander.axaml" />
         <ResourceInclude Source="../Controls/TabControl/TabControl.axaml" />
+        <ResourceInclude Source="../Controls/Menu/Menu.axaml" />
+        <ResourceInclude Source="../Controls/ToolTip/ToolTip.axaml" />
+        <ResourceInclude Source="../Controls/ListBox/ListBox.axaml" />
+        <ResourceInclude Source="../Controls/Flyout/Flyout.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

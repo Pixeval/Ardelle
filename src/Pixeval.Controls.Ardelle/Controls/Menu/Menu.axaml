@@ -1,0 +1,304 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White" Width="300">
+            <StackPanel Spacing="10">
+                <Button Content="Show Menu" HorizontalAlignment="Center">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="New File" InputGesture="Ctrl+N" />
+                            <MenuItem Header="Open Folder..." />
+                            <Separator />
+                            <MenuItem Header="Settings">
+                                <MenuItem Header="Themes" />
+                                <MenuItem Header="Preferences" />
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Exit" />
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="Pixeval.Menu.TopLevelItemTheme" TargetType="MenuItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Padding" Value="12,6" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_LayoutRoot"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid>
+                        <ContentPresenter
+                            x:Name="PART_HeaderPresenter"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            FontWeight="Bold" />
+                        <Popup
+                            x:Name="PART_Popup"
+                            IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
+                            Placement="BottomEdgeAlignedLeft"
+                            Focusable="False">
+                            <Grid Background="Transparent">
+                                <Panel Margin="0,0,4,4">
+                                    <Border
+                                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        CornerRadius="{StaticResource Pixeval.Radius.Small}"
+                                        Margin="4,4,0,0" />
+
+                                    <Border
+                                        Background="White"
+                                        BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        BorderThickness="2"
+                                        CornerRadius="{StaticResource Pixeval.Radius.Small}"
+                                        Padding="2">
+                                        <ScrollViewer Theme="{StaticResource {x:Type ScrollViewer}}">
+                                            <ItemsPresenter
+                                                x:Name="PART_ItemsPresenter"
+                                                ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                KeyboardNavigation.TabNavigation="Continue" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Panel>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="TextElement.Foreground" Value="White" />
+        </Style>
+
+        <Style Selector="^:selected /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="TextElement.Foreground" Value="White" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Top-Level Menu Theme (e.g. Menu Bar) -->
+    <ControlTheme x:Key="{x:Type Menu}" TargetType="Menu">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="ItemContainerTheme" Value="{StaticResource Pixeval.Menu.TopLevelItemTheme}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <ItemsPresenter
+                        x:Name="PART_ItemsPresenter"
+                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                        KeyboardNavigation.TabNavigation="Continue" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- ContextMenu Theme (Right-Click menus) -->
+    <ControlTheme x:Key="{x:Type ContextMenu}" TargetType="ContextMenu">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Transparent">
+                    <Panel Margin="0,0,4,4">
+                        <!-- Neobrutalism solid shadow under context menu -->
+                        <Border
+                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Margin="4,4,0,0" />
+
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                            <ScrollViewer Theme="{StaticResource {x:Type ScrollViewer}}">
+                                <ItemsPresenter
+                                    x:Name="PART_ItemsPresenter"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                    KeyboardNavigation.TabNavigation="Continue" />
+                            </ScrollViewer>
+                        </Border>
+                    </Panel>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- Separator Theme inside Popups -->
+    <ControlTheme x:Key="{x:Type Separator}" TargetType="Separator">
+        <Setter Property="Background" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Height" Value="2" />
+        <Setter Property="Margin" Value="4,6" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Height="{TemplateBinding Height}"
+                    Margin="{TemplateBinding Margin}"
+                    Background="{TemplateBinding Background}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- MenuItem Theme (Standard, Submenu or Top Level) -->
+    <ControlTheme x:Key="{x:Type MenuItem}" TargetType="MenuItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Padding" Value="10,6" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_LayoutRoot"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIcon" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemGesture" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemChevron" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Icon Column -->
+                        <ContentPresenter
+                            x:Name="PART_IconPresenter"
+                            Grid.Column="0"
+                            Content="{TemplateBinding Icon}"
+                            Width="16"
+                            Height="16"
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+
+                        <!-- Header Content -->
+                        <ContentPresenter
+                            x:Name="PART_HeaderPresenter"
+                            Grid.Column="1"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            FontWeight="Bold">
+                            <ContentPresenter.DataTemplates>
+                                <DataTemplate DataType="x:String">
+                                    <TextBlock Text="{Binding}" />
+                                </DataTemplate>
+                            </ContentPresenter.DataTemplates>
+                        </ContentPresenter>
+
+                        <!-- Input Gesture text -->
+                        <TextBlock
+                            x:Name="PART_InputGestureText"
+                            Grid.Column="2"
+                            Text="{TemplateBinding InputGesture, Converter={StaticResource KeyGestureInputGestureConverter}}"
+                            Margin="20,0,8,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Foreground="#888888"
+                            FontSize="11" />
+
+                        <!-- Submenu Chevron Arrow -->
+                        <PathIcon
+                            x:Name="PART_Chevron"
+                            Grid.Column="3"
+                            Width="8"
+                            Height="8"
+                            Margin="4,0,0,0"
+                            Data="M 0 0 L 4 4 L 0 8"
+                            VerticalAlignment="Center"
+                            Foreground="{StaticResource DefaultBrutalizationShadowBrush}"
+                            IsVisible="False" />
+
+                        <!-- Submenu Popup container -->
+                        <Popup
+                            x:Name="PART_Popup"
+                            Grid.Column="0"
+                            IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
+                            Placement="RightEdgeAlignedTop"
+                            Focusable="False">
+                            <Grid Background="Transparent">
+                                <Panel Margin="0,0,4,4">
+                                    <!-- Neobrutalism solid shadow under submenu -->
+                                    <Border
+                                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        CornerRadius="{StaticResource Pixeval.Radius.Small}"
+                                        Margin="4,4,0,0" />
+
+                                    <Border
+                                        Background="White"
+                                        BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        BorderThickness="2"
+                                        CornerRadius="{StaticResource Pixeval.Radius.Small}"
+                                        Padding="2">
+                                        <ScrollViewer Theme="{StaticResource {x:Type ScrollViewer}}">
+                                            <ItemsPresenter
+                                                x:Name="PART_ItemsPresenter"
+                                                ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                KeyboardNavigation.TabNavigation="Continue" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Panel>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State triggers deep shadow highlighting effect -->
+        <Style Selector="^:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="TextElement.Foreground" Value="White" />
+        </Style>
+        <Style Selector="^:pointerover /template/ PathIcon#PART_Chevron">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!-- Selected / Selected Hover States -->
+        <Style Selector="^:selected /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+            <Setter Property="TextElement.Foreground" Value="White" />
+        </Style>
+        <Style Selector="^:selected /template/ PathIcon#PART_Chevron">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!-- Submenu Item Indicators -->
+        <Style Selector="^:has-submenu /template/ PathIcon#PART_Chevron">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
