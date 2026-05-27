@@ -7,5 +7,9 @@
         <ResourceInclude Source="../Controls/ToggleSwitch/ToggleSwitch.axaml" />
         <ResourceInclude Source="../Controls/Slider/Slider.axaml" />
         <ResourceInclude Source="../Controls/TextBox/TextBox.axaml" />
+        <ResourceInclude Source="../Controls/ProgressBar/ProgressBar.axaml" />
+        <ResourceInclude Source="../Controls/ComboBox/ComboBox.axaml" />
+        <ResourceInclude Source="../Controls/Expander/Expander.axaml" />
+        <ResourceInclude Source="../Controls/TabControl/TabControl.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

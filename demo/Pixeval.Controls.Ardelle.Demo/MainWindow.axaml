@@ -1,4 +1,4 @@
-﻿<Window
+<Window
     x:Class="Pixeval.Controls.Ardelle.Demo.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -11,8 +11,8 @@
     x:CompileBindings="False"
     Title="Pixeval Ardelle Neobrutalism UI Showcase"
     Background="#F4F4F3"
-    Width="1100"
-    Height="800"
+    Width="1200"
+    Height="900"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     
@@ -85,7 +85,7 @@
                     </StackPanel>
                 </card:Card>
 
-                <!-- Section 2: Cards & Displays -->
+                <!-- Section 2: TabControl & Highlighting Views -->
                 <card:Card 
                     Margin="10" 
                     Padding="24"
@@ -94,38 +94,24 @@
                     attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
                     CornerRadius="12">
                     <StackPanel Spacing="16">
-                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Brutalized Cards" />
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Brutalist File Folder View (TabControl)" />
                         <Separator Height="1" Background="#1A1918" Opacity="0.2" />
                         
-                        <Grid ColumnDefinitions="*,*">
-                            <card:Card 
-                                Grid.Column="0"
-                                Margin="8" 
-                                Padding="15"
-                                Background="{markupExtensions:ColorToken Name=Tertiary}"
-                                attachedProperties:Brutalization.IsBrutalized="True"
-                                attachedProperties:Brutalization.BrutalizedShadows="5 5 0 0 #1A1918"
-                                CornerRadius="8">
-                                <StackPanel Spacing="8">
-                                    <TextBlock FontSize="16" FontWeight="Black" Foreground="White" Text="Tertiary Card" />
-                                    <TextBlock FontSize="12" Foreground="White" TextWrapping="Wrap" Text="具有经典的2px厚黑边框和不带模糊的纯黑直角投影。" />
+                        <TabControl Height="180">
+                            <TabItem Header="文件一">
+                                <StackPanel Margin="15" Spacing="8">
+                                    <TextBlock FontSize="16" FontWeight="Black" Text="极简新现代主义" />
+                                    <TextBlock FontSize="13" TextWrapping="Wrap" Text="此选卡经过重写，其页签模仿真实的档案文件夹，在选中时获得富有视觉冲击力的主题高亮色。" />
                                 </StackPanel>
-                            </card:Card>
-
-                            <card:Card 
-                                Grid.Column="1"
-                                Margin="8" 
-                                Padding="15"
-                                Background="{markupExtensions:ColorToken Name=Secondary}"
-                                attachedProperties:Brutalization.IsBrutalized="True"
-                                attachedProperties:Brutalization.BrutalizedShadows="5 5 0 0 #1A1918"
-                                CornerRadius="12">
-                                <StackPanel Spacing="8">
-                                    <TextBlock FontSize="16" FontWeight="Black" Foreground="White" Text="Secondary Card" />
-                                    <TextBlock FontSize="12" Foreground="White" TextWrapping="Wrap" Text="你可以自由修改阴影的偏移及颜色以满足更具冲击力的视觉样式需求。" />
+                            </TabItem>
+                            <TabItem Header="设置二">
+                                <StackPanel Margin="15" Spacing="8">
+                                    <TextBlock FontSize="16" FontWeight="Black" Text="选项卡 B 界面" />
+                                    <TextBlock FontSize="13" TextWrapping="Wrap" Text="任何放置在 TabItem 中的视图都会无缝融合在底下的新布鲁重构卡上。" />
                                 </StackPanel>
-                            </card:Card>
-                        </Grid>
+                            </TabItem>
+                            <TabItem Header="已锁定页" IsEnabled="False" />
+                        </TabControl>
                     </StackPanel>
                 </card:Card>
 
@@ -204,6 +190,57 @@
                                 </Grid>
                             </StackPanel>
                         </Grid>
+                    </StackPanel>
+                </card:Card>
+
+                <!-- Section 5: Complex Forms & Expanders -->
+                <card:Card 
+                    Margin="10" 
+                    Padding="24"
+                    Background="White"
+                    attachedProperties:Brutalization.IsBrutalized="True"
+                    attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
+                    CornerRadius="12">
+                    <StackPanel Spacing="16">
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="ComboBox &amp; Expander Blocks" />
+                        <Separator Height="1" Background="#1A1918" Opacity="0.2" />
+                        
+                        <StackPanel Spacing="14">
+                            <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="COMBOBOX (NEOBRUTAL OVERLAY)" />
+                            <ComboBox SelectedIndex="0" Width="280">
+                                <ComboBoxItem>第一顺位超级可选项</ComboBoxItem>
+                                <ComboBoxItem>第二顺位普通可选项</ComboBoxItem>
+                                <ComboBoxItem>第三顺位终极备用可选项</ComboBoxItem>
+                            </ComboBox>
+
+                            <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="EXPANDER COLLAPSIBLE" />
+                            <Expander Header="折叠信息模块 (Expander Header)">
+                                <TextBlock Text="新布鲁特主义下的抽屉折叠信息更侧重于明显的分割边缘。您可以在折叠组件里嵌套任何复合复杂控件从而减少界面拥挤感。" Height="40" TextWrapping="Wrap" />
+                            </Expander>
+                        </StackPanel>
+                    </StackPanel>
+                </card:Card>
+
+                <!-- Section 6: Action Status Indicators -->
+                <card:Card 
+                    Margin="10" 
+                    Padding="24"
+                    Background="White"
+                    attachedProperties:Brutalization.IsBrutalized="True"
+                    attachedProperties:Brutalization.BrutalizedShadows="6 6 0 0 #1A1918"
+                    CornerRadius="12">
+                    <StackPanel Spacing="16">
+                        <TextBlock FontSize="20" FontWeight="Black" Foreground="#1A1918" Text="Action Status &amp; Progress" />
+                        <Separator Height="1" Background="#1A1918" Opacity="0.2" />
+                        
+                        <StackPanel Spacing="16">
+                            <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="PROGRESS INDICATORS (DETERMINATE)" />
+                            <ProgressBar Value="35" Maximum="100" />
+                            <ProgressBar Value="75" Maximum="100" ShowProgressText="True" Foreground="{markupExtensions:ColorToken Name=Secondary}"/>
+
+                            <TextBlock FontWeight="Bold" FontSize="12" Foreground="#888" Text="PROGRESS STATIONS (INDETERMINATE)" />
+                            <ProgressBar IsIndeterminate="True" Foreground="{markupExtensions:ColorToken Name=Primary}" />
+                        </StackPanel>
                     </StackPanel>
                 </card:Card>
 

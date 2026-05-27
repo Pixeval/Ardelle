@@ -1,0 +1,138 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White" Width="350">
+            <StackPanel Spacing="20">
+                <Expander Header="Standard Expander">
+                    <TextBlock Padding="10" Text="This is the expanded brutalist text content! It works really well." />
+                </Expander>
+                <Expander Header="With Accent Color" Background="{markupExtensions:ColorToken Name=Secondary}">
+                    <TextBlock Padding="10" Text="Another awesome panel expanded inside." />
+                </Expander>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="Pixeval.Expander.HeaderToggleTheme" TargetType="ToggleButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,2" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <ContentPresenter
+                            Grid.Column="0"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            FontWeight="Black"
+                            RecognizesAccessKey="True" />
+
+                        <Border Grid.Column="1" Margin="8,0,0,0" Width="20" Height="20">
+                            <PathIcon
+                                x:Name="PART_ExpandIcon"
+                                Width="12"
+                                Height="12"
+                                Data="M 0 2 L 5 7 L 10 2"
+                                Foreground="{StaticResource DefaultBrutalizationShadowBrush}"
+                                RenderTransform="rotate(0deg)">
+                                <PathIcon.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" Easing="CubicEaseOut" />
+                                    </Transitions>
+                                </PathIcon.Transitions>
+                            </PathIcon>
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:checked /template/ PathIcon#PART_ExpandIcon">
+            <Setter Property="RenderTransform" Value="rotate(180deg)" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type Expander}" TargetType="Expander">
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Transparent">
+                    <Panel Margin="0,0,4,4">
+                        <!-- Underlay shadow offset block for the whole Expander -->
+                        <Border
+                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Margin="4,4,0,0" />
+
+                        <!-- Container border -->
+                        <Border
+                            x:Name="PART_MainContainer"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Margin="0,0,4,4"
+                            ClipToBounds="True">
+                            
+                            <Grid RowDefinitions="Auto,*">
+                                <!-- Expander Header toggle button inside -->
+                                <ToggleButton
+                                    x:Name="PART_toggle"
+                                    Theme="{StaticResource Pixeval.Expander.HeaderToggleTheme}"
+                                    Grid.Row="0"
+                                    MinHeight="44"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Content="{TemplateBinding Header}"
+                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                    IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
+                                    Cursor="Hand">
+                                </ToggleButton>
+
+                                <!-- Expanded Content container -->
+                                <Border
+                                    x:Name="PART_ContentContainer"
+                                    Grid.Row="1"
+                                    Background="White"
+                                    IsVisible="{TemplateBinding IsExpanded, Mode=OneWay}">
+                                    <ContentPresenter
+                                        x:Name="PART_ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Padding="14" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Panel>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.6" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

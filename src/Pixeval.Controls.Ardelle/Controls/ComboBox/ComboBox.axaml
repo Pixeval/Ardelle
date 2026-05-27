@@ -1,0 +1,190 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="40" Background="White" Width="300" Height="250">
+            <StackPanel Spacing="20">
+                <ComboBox PlaceholderText="Select Option" Width="200">
+                    <ComboBoxItem>First Awesome Choice</ComboBoxItem>
+                    <ComboBoxItem>Second Awesome Choice</ComboBoxItem>
+                    <ComboBoxItem>Third Awesome Choice</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- ComboBoxItem Theme (Individual selection elements inside the ComboBox list) -->
+    <ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="12,10,12,10" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_ItemBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    CornerRadius="4"
+                    Margin="4,2,4,2">
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover & Selection Styles with bright background fills -->
+        <Style Selector="^:pointerover /template/ Border#PART_ItemBorder">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style Selector="^:selected /template/ Border#PART_ItemBorder">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Secondary}" />
+        </Style>
+        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        
+        <Style Selector="^:selected:pointerover /template/ Border#PART_ItemBorder">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Secondary}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Main ComboBox Theme with Neobrutalism shadow dropdown overlay -->
+    <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
+        <Setter Property="Padding" Value="12,10,36,10" />
+        <Setter Property="MinHeight" Value="42" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="PlaceholderForeground" Value="#A1A1AA" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataValidationErrors>
+                    <Grid Background="Transparent">
+                        <Panel Margin="0,0,4,4">
+                            <!-- Neobrutalism Underlay Solid Shadow -->
+                            <Border
+                                x:Name="PART_ShadowBorder"
+                                Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Margin="4,4,0,0" />
+
+                            <!-- Main button frame -->
+                            <Border
+                                x:Name="Background"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Margin="0,0,4,4"
+                                MinHeight="{TemplateBinding MinHeight}">
+                                
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <!-- Selection display -->
+                                    <TextBlock 
+                                        x:Name="PlaceholderTextBlock"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Margin="{TemplateBinding Padding}"
+                                        Text="{TemplateBinding PlaceholderText}"
+                                        Foreground="{TemplateBinding PlaceholderForeground}"
+                                        FontWeight="SemiBold"
+                                        IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+
+                                    <ContentControl 
+                                        x:Name="ContentPresenter"
+                                        Grid.Column="0"
+                                        Content="{TemplateBinding SelectionBoxItem}"
+                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        FontWeight="SemiBold" />
+
+                                    <!-- Chevron arrow indicator -->
+                                    <PathIcon 
+                                        x:Name="DropDownGlyph"
+                                        Grid.Column="1"
+                                        Width="12"
+                                        Height="12"
+                                        Margin="0,0,14,0"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Foreground="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        Data="M 0 2 L 5 7 L 10 2" />
+
+                                    <!-- Embedded Popup holding items (Styled like a pop-up paper block) -->
+                                    <Popup 
+                                        x:Name="PART_Popup"
+                                        WindowManagerAddShadowHint="False"
+                                        IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+                                        MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                        PlacementTarget="{Binding ElementName=Background}"
+                                        Placement="Bottom"
+                                        HorizontalOffset="0"
+                                        VerticalOffset="2">
+                                        
+                                        <!-- Underlay shadow offset of popup list -->
+                                        <Grid Margin="0,0,6,6">
+                                            <Border
+                                                Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                                CornerRadius="{StaticResource Pixeval.Radius.Medium}"
+                                                Margin="6,6,0,0" />
+
+                                            <Border
+                                                Background="White"
+                                                BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                                BorderThickness="2"
+                                                CornerRadius="{StaticResource Pixeval.Radius.Medium}"
+                                                Margin="0,0,6,6"
+                                                Padding="4">
+                                                <ScrollViewer 
+                                                    HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                                    VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                                                    <ItemsPresenter 
+                                                        x:Name="PART_ItemsPresenter"
+                                                        ItemsPanel="{TemplateBinding ItemsPanel}" />
+                                                </ScrollViewer>
+                                            </Border>
+                                        </Grid>
+                                    </Popup>
+                                </Grid>
+                            </Border>
+                        </Panel>
+                    </Grid>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Border#Background">
+            <Setter Property="RenderTransform" Value="translate(1px, 1px)" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#Background">
+            <Setter Property="RenderTransform" Value="translate(2px, 2px)" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.6" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

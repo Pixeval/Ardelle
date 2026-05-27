@@ -1,0 +1,122 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="White" Width="400" Height="300">
+            <TabControl>
+                <TabItem Header="Tab One">
+                    <TextBlock Padding="15" Text="This is the content displayed on Tab One." />
+                </TabItem>
+                <TabItem Header="Tab Two">
+                    <TextBlock Padding="15" Text="This is the content displayed on Tab Two." />
+                </TabItem>
+                <TabItem Header="Disabled Tab" IsEnabled="False">
+                    <TextBlock Padding="15" Text="Disabled" />
+                </TabItem>
+            </TabControl>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- TabItem Theme (Styled like neobrutalism file tabs) -->
+    <ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem">
+        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="#F1F1EF" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderThickness" Value="2,2,2,0" />
+        <Setter Property="Margin" Value="0,0,4,0" />
+        <Setter Property="Padding" Value="14,8,14,8" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="CornerRadius" Value="8,8,0,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_TabItemBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Margin="{TemplateBinding Margin}"
+                    Padding="{TemplateBinding Padding}"
+                    VerticalAlignment="Bottom">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="Background" Duration="0:0:0.1" />
+                        </Transitions>
+                    </Border.Transitions>
+
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Header}"
+                        ContentTemplate="{TemplateBinding HeaderTemplate}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontWeight="Black" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Selected State (active tab is highlighted in Primary or Secondary theme color and sits higher/flatter) -->
+        <Style Selector="^:selected">
+            <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Secondary}" />
+            <Setter Property="Foreground" Value="White" />
+            <Style Selector="^ /template/ Border#PART_TabItemBorder">
+                <Setter Property="Padding" Value="14,12,14,8" /> <!-- Sits slightly taller -->
+            </Style>
+        </Style>
+
+        <Style Selector="^:pointerover:not(:selected)">
+            <Setter Property="Background" Value="#E4E4E7" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.4" />
+            <Setter Property="Cursor" Value="Arrow" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Main TabControl Theme (Slightly lowered folder container outline block) -->
+    <ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid RowDefinitions="Auto,*">
+                    <!-- Tab Headers panel -->
+                    <ScrollViewer 
+                        Grid.Row="0"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Disabled">
+                        <ItemsPresenter 
+                            x:Name="PART_ItemsPresenter"
+                            ItemsPanel="{TemplateBinding ItemsPanel}" />
+                    </ScrollViewer>
+
+                    <!-- Large Folder Body Sheet Container -->
+                    <Panel Grid.Row="1" Margin="0,0,4,4">
+                        <Border
+                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            CornerRadius="0,8,8,8"
+                            Margin="4,4,0,0" />
+
+                        <Border
+                            Background="White"
+                            BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                            BorderThickness="2"
+                            CornerRadius="0,8,8,8"
+                            Margin="0,0,4,4">
+                            <ContentPresenter 
+                                x:Name="PART_SelectedContentHost"
+                                Content="{TemplateBinding SelectedContent}"
+                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </Panel>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
