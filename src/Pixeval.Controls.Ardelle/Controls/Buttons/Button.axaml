@@ -11,7 +11,7 @@
         x:Key="{x:Type controls:Button}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="controls:Button">
-        <Setter Property="Background" Value="{StaticResource DefaultButtonEnabledBackground}" />
+        <Setter Property="Background" Value="{DynamicResource DefaultButtonEnabledBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">

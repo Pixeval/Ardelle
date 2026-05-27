@@ -14,10 +14,10 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
-        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
-        <Setter Property="Background" Value="White" />
-        <Setter Property="CaretBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Pixeval.Brush.Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Pixeval.Brush.Foreground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="SelectionBrush" Value="{markupExtensions:ColorToken Name=Secondary}" />
         <Setter Property="PlaceholderForeground" Value="#A1A1AA" />
         <Setter Property="BorderThickness" Value="2" />
@@ -36,7 +36,7 @@
                         <!-- Neobrutalism Solid Offset Underlay Shadow -->
                         <Border
                             x:Name="PART_ShadowBorder"
-                            Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                            Background="{DynamicResource DefaultBrutalizationShadowBrush}"
                             BorderBrush="Transparent"
                             BorderThickness="0"
                             CornerRadius="{TemplateBinding CornerRadius}"
@@ -132,11 +132,11 @@
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="0.6" />
             <Style Selector="^ /template/ Border#PART_BorderElement">
-                <Setter Property="Background" Value="#F1F1EF" />
-                <Setter Property="BorderBrush" Value="#C5C5C4" />
+                <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.SurfaceAlt}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
             </Style>
             <Style Selector="^ /template/ Border#PART_ShadowBorder">
-                <Setter Property="Background" Value="#C5C5C4" />
+                <Setter Property="Background" Value="{DynamicResource DefaultBrutalizationShadowBrush}" />
             </Style>
         </Style>
     </ControlTheme>

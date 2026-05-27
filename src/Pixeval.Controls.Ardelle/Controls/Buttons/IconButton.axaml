@@ -11,7 +11,7 @@
         x:Key="{x:Type controls:IconButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="controls:IconButton">
-        <Setter Property="Background" Value="{StaticResource DefaultIconButtonEnabledBackground}" />
+        <Setter Property="Background" Value="{DynamicResource DefaultIconButtonEnabledBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Style Selector="^ /template/ avalonia|FluentIcon">

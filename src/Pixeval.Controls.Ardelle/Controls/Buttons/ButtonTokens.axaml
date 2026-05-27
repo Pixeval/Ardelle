@@ -2,21 +2,41 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#F1F1EF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#F4F4F5</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#1A1918</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#E4E4E7</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#F1F1EF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#F1F1EF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#F2F5F9</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#E3E8EF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#1A1918</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#F4F4F3</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#4F4E4D</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">#20201E</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#181817</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#2D2D2A</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#F4F4F3</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#3D3D3A</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#20201E</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#181817</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#2D2D29</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#383835</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#F4F4F3</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#4F4E4D</SolidColorBrush>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
     <Thickness x:Key="DefaultButtonContentMargin">24,14,24,14</Thickness>
-    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">White</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#F1F1EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#F4F4F5</SolidColorBrush>
-    <Thickness x:Key="DefaultOutlineButtonBorderThickness">1</Thickness>
-    <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#E5E4E2</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#E4E4E7</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#F1F1EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#F1F1EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#F2F5F9</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#E3E8EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#1A1918</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+    <Thickness x:Key="DefaultOutlineButtonBorderThickness">2</Thickness> <!-- Thick Neobrutalism border! -->
     <system:Double x:Key="DefaultIconButtonIconContentSpacing">8</system:Double>
     <system:Double x:Key="DefaultActionButtonBrutalizationShadowOffset">4</system:Double>
     <TransformOperations x:Key="DefaultActionButtonHoverTransform">

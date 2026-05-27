@@ -127,7 +127,7 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
-        <Setter Property="Background" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.SurfaceAlt}" />
         <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=Secondary}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
         <Setter Property="BorderThickness" Value="0" />

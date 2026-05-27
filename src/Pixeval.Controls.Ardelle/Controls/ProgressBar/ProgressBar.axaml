@@ -16,8 +16,8 @@
 
     <ControlTheme x:Key="{x:Type ProgressBar}" TargetType="ProgressBar">
         <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=Primary}" />
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
         <Setter Property="MinHeight" Value="24" />

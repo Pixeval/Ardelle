@@ -17,12 +17,26 @@
     mc:Ignorable="d">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="DemoPageBackgroundBrush" Color="#F4F4F3" />
-        <SolidColorBrush x:Key="DemoCardBackgroundBrush" Color="#FFFFFF" />
-        <SolidColorBrush x:Key="DemoCardForegroundBrush" Color="#1A1918" />
-        <SolidColorBrush x:Key="DemoMutedForegroundBrush" Color="#888888" />
-        <SolidColorBrush x:Key="DemoSeparatorBrush" Color="#1A1918" />
-        <SolidColorBrush x:Key="DemoAltSurfaceBrush" Color="#E6E6E3" />
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="DemoPageBackgroundBrush" Color="#F4F4F3" />
+                    <SolidColorBrush x:Key="DemoCardBackgroundBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="DemoCardForegroundBrush" Color="#1A1918" />
+                    <SolidColorBrush x:Key="DemoMutedForegroundBrush" Color="#888888" />
+                    <SolidColorBrush x:Key="DemoSeparatorBrush" Color="#1A1918" />
+                    <SolidColorBrush x:Key="DemoAltSurfaceBrush" Color="#E6E6E3" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="DemoPageBackgroundBrush" Color="#121211" />
+                    <SolidColorBrush x:Key="DemoCardBackgroundBrush" Color="#20201E" />
+                    <SolidColorBrush x:Key="DemoCardForegroundBrush" Color="#F4F4F3" />
+                    <SolidColorBrush x:Key="DemoMutedForegroundBrush" Color="#C8C8C2" />
+                    <SolidColorBrush x:Key="DemoSeparatorBrush" Color="#F4F4F3" />
+                    <SolidColorBrush x:Key="DemoAltSurfaceBrush" Color="#2D2D2A" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <ScrollViewer x:Name="DemoScrollViewer" VerticalScrollBarVisibility="Auto">

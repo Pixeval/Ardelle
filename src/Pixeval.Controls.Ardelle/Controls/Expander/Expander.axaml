@@ -66,9 +66,9 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type Expander}" TargetType="Expander">
-        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Pixeval.Brush.Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -114,7 +114,7 @@
                                 <Border
                                     x:Name="PART_ContentContainer"
                                     Grid.Row="1"
-                                    Background="White"
+                                    Background="{DynamicResource Pixeval.Brush.Surface}"
                                     IsVisible="{TemplateBinding IsExpanded, Mode=OneWay}">
                                     <ContentPresenter
                                         x:Name="PART_ContentPresenter"

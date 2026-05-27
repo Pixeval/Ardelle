@@ -11,12 +11,12 @@
         x:Key="{x:Type controls:ActionButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="controls:ActionButton">
-        <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Primary}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="999" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultBrutalizationShadowBrush}" />
         <Style Selector="^:disabled">
-            <Setter Property="BorderBrush" Value="{Binding Source={StaticResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
+            <Setter Property="BorderBrush" Value="{Binding Source={DynamicResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
         </Style>
         <Setter Property="Template">
             <ControlTemplate>

@@ -21,8 +21,8 @@
 
     <!-- TabItem Theme (Styled like neobrutalism file tabs) -->
     <ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem">
-        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
-        <Setter Property="Background" Value="#F1F1EF" />
+        <Setter Property="Foreground" Value="{DynamicResource Pixeval.Brush.Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.SurfaceAlt}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
         <Setter Property="BorderThickness" Value="2,2,2,0" />
         <Setter Property="Margin" Value="0,0,4,0" />
@@ -69,7 +69,7 @@
         </Style>
 
         <Style Selector="^:pointerover:not(:selected)">
-            <Setter Property="Background" Value="#E4E4E7" />
+            <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.SurfaceAlt}" />
         </Style>
 
         <Style Selector="^:disabled">
@@ -103,7 +103,7 @@
                             Margin="4,4,0,0" />
 
                         <Border
-                            Background="White"
+                            Background="{DynamicResource Pixeval.Brush.Surface}"
                             BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
                             BorderThickness="2"
                             CornerRadius="0,8,8,8"

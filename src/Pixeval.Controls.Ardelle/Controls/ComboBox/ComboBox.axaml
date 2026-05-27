@@ -17,7 +17,7 @@
 
     <!-- ComboBoxItem Theme (Individual selection elements inside the ComboBox list) -->
     <ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
-        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Pixeval.Brush.Foreground}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="12,10,12,10" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -47,14 +47,14 @@
             <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
         </Style>
         <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
         </Style>
 
         <Style Selector="^:selected /template/ Border#PART_ItemBorder">
             <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Secondary}" />
         </Style>
         <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=OnSecondary}" />
         </Style>
         
         <Style Selector="^:selected:pointerover /template/ Border#PART_ItemBorder">
@@ -64,9 +64,9 @@
 
     <!-- Main ComboBox Theme with Neobrutalism shadow dropdown overlay -->
     <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
-        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Pixeval.Brush.Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
         <Setter Property="Padding" Value="12,10,36,10" />
@@ -147,13 +147,13 @@
                                         <!-- Underlay shadow offset of popup list -->
                                         <Grid Margin="0,0,6,6">
                                             <Border
-                                                Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                                Background="{DynamicResource DefaultBrutalizationShadowBrush}"
                                                 CornerRadius="{StaticResource Pixeval.Radius.Medium}"
                                                 Margin="6,6,0,0" />
 
                                             <Border
-                                                Background="White"
-                                                BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                                Background="{DynamicResource Pixeval.Brush.Surface}"
+                                                BorderBrush="{DynamicResource Pixeval.Brush.Border}"
                                                 BorderThickness="2"
                                                 CornerRadius="{StaticResource Pixeval.Radius.Medium}"
                                                 Margin="0,0,6,6"

@@ -20,10 +20,10 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="Foreground" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Pixeval.Brush.Foreground}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid x:Name="RootGrid" ColumnDefinitions="Auto,*" Background="Transparent">
@@ -112,8 +112,8 @@
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="0.6" />
             <Style Selector="^ /template/ Border#PART_Border">
-                <Setter Property="Background" Value="#F1F1EF" />
-                <Setter Property="BorderBrush" Value="#C5C5C4" />
+                <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.SurfaceAlt}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
             </Style>
         </Style>
     </ControlTheme>

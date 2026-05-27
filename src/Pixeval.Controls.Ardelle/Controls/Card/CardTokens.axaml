@@ -2,8 +2,17 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <SolidColorBrush x:Key="DefaultCardBackground">#FDFCFA</SolidColorBrush>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="DefaultCardBackground">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardBorderBrush">#1A1918</SolidColorBrush>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="DefaultCardBackground">#20201E</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardBorderBrush">#F4F4F3</SolidColorBrush>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    
     <Thickness x:Key="CardContainerGridMargin">5</Thickness>
-    <SolidColorBrush x:Key="DefaultCardBorderBrush">#E5E4E2</SolidColorBrush>
-    <Thickness x:Key="DefaultCardBorderThickness">1</Thickness>
+    <Thickness x:Key="DefaultCardBorderThickness">2</Thickness>
 </ResourceDictionary>

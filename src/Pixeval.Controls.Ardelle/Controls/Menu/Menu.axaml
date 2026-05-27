@@ -64,7 +64,7 @@
                                         Margin="4,4,0,0" />
 
                                     <Border
-                                        Background="White"
+                                        Background="{DynamicResource Pixeval.Brush.Surface}"
                                         BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
                                         BorderThickness="2"
                                         CornerRadius="{StaticResource Pixeval.Radius.Small}"
@@ -97,8 +97,8 @@
 
     <!-- Top-Level Menu Theme (e.g. Menu Bar) -->
     <ControlTheme x:Key="{x:Type Menu}" TargetType="Menu">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
         <Setter Property="Padding" Value="4" />
@@ -122,8 +122,8 @@
 
     <!-- ContextMenu Theme (Right-Click menus) -->
     <ControlTheme x:Key="{x:Type ContextMenu}" TargetType="ContextMenu">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Small}" />
         <Setter Property="Padding" Value="2" />
@@ -259,13 +259,13 @@
                                 <Panel Margin="0,0,4,4">
                                     <!-- Neobrutalism solid shadow under submenu -->
                                     <Border
-                                        Background="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        Background="{DynamicResource DefaultBrutalizationShadowBrush}"
                                         CornerRadius="{StaticResource Pixeval.Radius.Small}"
                                         Margin="4,4,0,0" />
 
                                     <Border
-                                        Background="White"
-                                        BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                        Background="{DynamicResource Pixeval.Brush.Surface}"
+                                        BorderBrush="{DynamicResource Pixeval.Brush.Border}"
                                         BorderThickness="2"
                                         CornerRadius="{StaticResource Pixeval.Radius.Small}"
                                         Padding="2">
@@ -287,19 +287,19 @@
         <!-- Hover State triggers deep shadow highlighting effect -->
         <Style Selector="^:pointerover /template/ Border#PART_LayoutRoot">
             <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
-            <Setter Property="TextElement.Foreground" Value="White" />
+            <Setter Property="TextElement.Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
         </Style>
         <Style Selector="^:pointerover /template/ PathIcon#PART_Chevron">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
         </Style>
 
         <!-- Selected / Selected Hover States -->
         <Style Selector="^:selected /template/ Border#PART_LayoutRoot">
             <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
-            <Setter Property="TextElement.Foreground" Value="White" />
+            <Setter Property="TextElement.Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
         </Style>
         <Style Selector="^:selected /template/ PathIcon#PART_Chevron">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
         </Style>
 
         <!-- Submenu Item Indicators -->

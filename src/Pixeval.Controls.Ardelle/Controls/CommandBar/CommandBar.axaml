@@ -266,8 +266,8 @@
     <!-- CommandBar ControlTheme -->
     <ControlTheme x:Key="{x:Type CommandBar}" TargetType="CommandBar">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
         <Setter Property="MinHeight" Value="48" />
@@ -344,8 +344,8 @@
                                                 CornerRadius="{StaticResource Pixeval.Radius.Small}"
                                                 Margin="4,4,0,0" />
 
-                                            <Border Background="White"
-                                                    BorderBrush="{StaticResource DefaultBrutalizationShadowBrush}"
+                                            <Border Background="{DynamicResource Pixeval.Brush.Surface}"
+                                                    BorderBrush="{DynamicResource Pixeval.Brush.Border}"
                                                     BorderThickness="2"
                                                     CornerRadius="{StaticResource Pixeval.Radius.Small}"
                                                     Padding="4"

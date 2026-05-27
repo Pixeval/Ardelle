@@ -1,8 +1,56 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="Pixeval.Color.Primary">#FF3366</Color>
-    <Color x:Key="Pixeval.Color.Secondary">#4F46E5</Color>
-    <Color x:Key="Pixeval.Color.Tertiary">#8364CE</Color>
-    <Color x:Key="Pixeval.Color.Neutral">#FDFCFA</Color>
-    <Color x:Key="Pixeval.Color.Error">#FF0033</Color>
-    <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#1A1918</SolidColorBrush>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <Color x:Key="Pixeval.Color.Primary">#FF3366</Color>
+            <Color x:Key="Pixeval.Color.Secondary">#4F46E5</Color>
+            <Color x:Key="Pixeval.Color.Tertiary">#8364CE</Color>
+            <Color x:Key="Pixeval.Color.Neutral">#FDFCFA</Color>
+            <Color x:Key="Pixeval.Color.Error">#FF0033</Color>
+
+            <SolidColorBrush x:Key="Pixeval.Brush.Primary">#FF3366</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Secondary">#4F46E5</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Tertiary">#8364CE</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Neutral">#FDFCFA</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Error">#FF0033</SolidColorBrush>
+
+            <SolidColorBrush x:Key="Pixeval.Brush.OnPrimary">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnSecondary">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnTertiary">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnNeutral">#1A1918</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnError">#FFFFFF</SolidColorBrush>
+
+            <SolidColorBrush x:Key="Pixeval.Brush.Surface">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.SurfaceAlt">#F5F5F5</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Foreground">#1A1918</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.ForegroundMuted">#757575</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Border">#1A1918</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#1A1918</SolidColorBrush>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="Pixeval.Color.Primary">#FF4D80</Color>
+            <Color x:Key="Pixeval.Color.Secondary">#6366F1</Color>
+            <Color x:Key="Pixeval.Color.Tertiary">#9F7AEA</Color>
+            <Color x:Key="Pixeval.Color.Neutral">#1D1C1B</Color>
+            <Color x:Key="Pixeval.Color.Error">#FF3355</Color>
+
+            <SolidColorBrush x:Key="Pixeval.Brush.Primary">#FF4D80</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Secondary">#6366F1</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Tertiary">#9F7AEA</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Neutral">#1D1C1B</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Error">#FF3355</SolidColorBrush>
+
+            <SolidColorBrush x:Key="Pixeval.Brush.OnPrimary">#050505</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnSecondary">#050505</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnTertiary">#050505</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnNeutral">#F4F4F3</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.OnError">#050505</SolidColorBrush>
+
+            <SolidColorBrush x:Key="Pixeval.Brush.Surface">#20201E</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.SurfaceAlt">#2D2D2A</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Foreground">#F4F4F3</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.ForegroundMuted">#C8C8C2</SolidColorBrush>
+            <SolidColorBrush x:Key="Pixeval.Brush.Border">#F4F4F3</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#050505</SolidColorBrush>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

@@ -53,20 +53,20 @@
         <!-- Selected State -->
         <Style Selector="^:selected /template/ Border#PART_ItemBorder">
             <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
-            <Setter Property="TextElement.Foreground" Value="White" />
-            <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
             <Setter Property="BorderThickness" Value="2" />
         </Style>
         <Style Selector="^:selected:pointerover /template/ Border#PART_ItemBorder">
             <Setter Property="Background" Value="{markupExtensions:ColorToken Name=Primary}" />
-            <Setter Property="TextElement.Foreground" Value="White" />
+            <Setter Property="TextElement.Foreground" Value="{markupExtensions:ColorToken Name=OnPrimary}" />
         </Style>
     </ControlTheme>
 
     <!-- ListBox Theme -->
     <ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Pixeval.Brush.Border}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />
         <Setter Property="Padding" Value="4" />

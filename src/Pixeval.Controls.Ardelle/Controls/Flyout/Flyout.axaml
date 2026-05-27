@@ -22,7 +22,7 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type FlyoutPresenter}" TargetType="FlyoutPresenter">
-        <Setter Property="Background" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Surface}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Medium}" />

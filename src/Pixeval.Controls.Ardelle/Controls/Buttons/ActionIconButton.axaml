@@ -12,15 +12,15 @@
         x:Key="{x:Type controls:ActionIconButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="controls:ActionIconButton">
-        <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
+        <Setter Property="Background" Value="{DynamicResource Pixeval.Brush.Primary}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="999" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultBrutalizationShadowBrush}" />
         <Style Selector="^[IsLabelCollapsed=true]">
             <Setter Property="Padding" Value="14" />
         </Style>
         <Style Selector="^:disabled">
-            <Setter Property="BorderBrush" Value="{Binding Source={StaticResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
+            <Setter Property="BorderBrush" Value="{Binding Source={DynamicResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
         </Style>
         <Style Selector="^ /template/ avalonia|FluentIcon">
             <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
