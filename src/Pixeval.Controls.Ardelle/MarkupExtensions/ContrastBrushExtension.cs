@@ -19,39 +19,33 @@
 #endregion
 
 using System.Globalization;
-using Avalonia.Data;
 using Avalonia.Data.Converters;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Pixeval.Controls.Ardelle.Tokens;
 
 namespace Pixeval.Controls.Ardelle.MarkupExtensions;
 
-public class ContrastBrushExtension : MarkupExtension
+public sealed class ContrastBrushConverter : IValueConverter
 {
-    public required object? BaseColor { get; set; }
-    
-    public override object ProvideValue(IServiceProvider serviceProvider)
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        switch (BaseColor)
-        {
-            case Binding binding:
-                var previousConverter = binding.Converter;
-                binding.Converter = new FuncValueConverter<object?, SolidColorBrush?>(value =>
-                {
-                    var converted = previousConverter is null
-                        ? value
-                        : previousConverter.Convert(value, typeof(object), binding.ConverterParameter, CultureInfo.InvariantCulture);
-
-                    return converted is ISolidColorBrush brush
-                        ? brush.Color.Palette.OnBaseline
-                        : null;
-                });
-                return binding;
-            case ISolidColorBrush scb:
-                return scb.Color.Palette.OnBaseline;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(BaseColor));
-        }
+        return TryGetBrush(value)?.Color.Palette.OnBaseline;
     }
+
+    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) =>
+        throw new NotSupportedException();
+
+    internal static ISolidColorBrush? TryGetBrush(object? value) => value switch
+    {
+        ISolidColorBrush brush => brush,
+        Color color => color.Brush,
+        _ => null
+    };
+}
+
+public static class ArdelleConverters
+{
+    public static ContrastBrushConverter ContrastBrush { get; } = new();
+
+    public static ShiftedColorBrushConverter ShiftedColorBrush { get; } = new();
 }

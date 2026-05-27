@@ -1,6 +1,7 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <ControlTheme x:Key="BaseButtonTheme" TargetType="Button">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
@@ -10,17 +11,17 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Foreground" Value="{markupExtensions:ContrastBrush BaseColor={Binding Background, RelativeSource={RelativeSource Self}}}" />
-        
+        <Setter Property="Foreground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Converter={x:Static markupExtensions:ArdelleConverters.ContrastBrush}}" />
+
         <Style Selector="^:disabled">
-            <Setter Property="Foreground" Value="{markupExtensions:ShiftedColorBrush BaseColor={Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime}, Index=3}" />
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=3}" />
         </Style>
         <Style Selector="^:disabled/template/Border#PART_GeneralButtonContainerBorder">
             <Setter Property="Cursor" Value="Arrow" />
-            <Setter Property="Background" Value="{markupExtensions:ShiftedColorBrush BaseColor={Binding Background, RelativeSource={RelativeSource TemplatedParent}, Mode=OneTime}, Index=3}" />
+            <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}, Mode=OneTime, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=3}" />
         </Style>
         <Style Selector="^:pressed/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="Background" Value="{markupExtensions:ShiftedColorBrush BaseColor={Binding Background, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}, Index=2}" />
+            <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

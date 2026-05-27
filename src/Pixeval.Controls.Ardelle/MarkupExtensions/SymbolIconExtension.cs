@@ -3,6 +3,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Metadata;
 using Avalonia.Threading;
 using FluentIcons.Avalonia;
 using FluentIcons.Common;

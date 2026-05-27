@@ -1,13 +1,17 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
-                    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions"
-                    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia">
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <Design.PreviewWith>
         <controls:ActionButton />
     </Design.PreviewWith>
 
-    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:ActionIconButton}" TargetType="controls:ActionIconButton">
+    <ControlTheme
+        x:Key="{x:Type controls:ActionIconButton}"
+        BasedOn="{StaticResource BaseButtonTheme}"
+        TargetType="controls:ActionIconButton">
         <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="999" />
@@ -16,7 +20,7 @@
             <Setter Property="Padding" Value="14" />
         </Style>
         <Style Selector="^:disabled">
-            <Setter Property="BorderBrush" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultBrutalizationShadowBrush}, Index=2}" />
+            <Setter Property="BorderBrush" Value="{Binding Source={StaticResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
         </Style>
         <Style Selector="^ /template/ avalonia|FluentIcon">
             <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -26,32 +30,33 @@
         </Style>
         <Setter Property="Template">
             <ControlTemplate>
-                <Border BorderBrush="Transparent" BorderThickness="0" Padding="15">
+                <Border
+                    Padding="15"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
                     <Grid>
-                        <Border 
+                        <Border
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            UseLayoutRounding="True"
+                            Background="{TemplateBinding BorderBrush}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            Background="{TemplateBinding BorderBrush}">
+                            UseLayoutRounding="True">
                             <Border.RenderTransform>
-                                <TranslateTransform
-                                    X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" 
-                                    Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
+                                <TranslateTransform X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
                             </Border.RenderTransform>
                         </Border>
                         <Border
                             x:Name="PART_GeneralButtonContainerBorder"
+                            Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="{TemplateBinding CornerRadius}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
                             RenderTransform="translate(0, 0)"
-                            UseLayoutRounding="True"
-                            Padding="{TemplateBinding Padding}">
+                            UseLayoutRounding="True">
                             <Border.Transitions>
                                 <Transitions>
-                                    <TransformOperationsTransition Duration="0:0:0.2" Property="RenderTransform">
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2">
                                         <TransformOperationsTransition.Easing>
                                             <CubicEaseOut />
                                         </TransformOperationsTransition.Easing>
@@ -59,20 +64,20 @@
                                 </Transitions>
                             </Border.Transitions>
                             <StackPanel Orientation="Horizontal" Spacing="{StaticResource DefaultIconButtonIconContentSpacing}">
-                                <Viewbox VerticalAlignment="Center"
-                                         Width="{TemplateBinding FontSize}"
-                                         Height="{TemplateBinding FontSize}" 
-                                         Stretch="Uniform"
-                                         StretchDirection="Both">
-                                    <ContentPresenter Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Icon}" />
+                                <Viewbox
+                                    Width="{TemplateBinding FontSize}"
+                                    Height="{TemplateBinding FontSize}"
+                                    VerticalAlignment="Center"
+                                    Stretch="Uniform"
+                                    StretchDirection="Both">
+                                    <ContentPresenter Content="{TemplateBinding Icon}" Foreground="{TemplateBinding Foreground}" />
                                 </Viewbox>
                                 <ContentPresenter
-                                    IsVisible="{Binding !IsLabelCollapsed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding Content}"
                                     FontSize="{TemplateBinding FontSize}"
-                                    VerticalAlignment="Center" 
-                                    Foreground="{TemplateBinding Foreground}" 
-                                    Content="{TemplateBinding Content}">
-                                </ContentPresenter>
+                                    Foreground="{TemplateBinding Foreground}"
+                                    IsVisible="{Binding !IsLabelCollapsed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             </StackPanel>
                         </Border>
                     </Grid>

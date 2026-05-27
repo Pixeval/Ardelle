@@ -1,53 +1,59 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
-                    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <Design.PreviewWith>
         <controls:ActionButton />
     </Design.PreviewWith>
 
-    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:ActionButton}" TargetType="controls:ActionButton">
+    <ControlTheme
+        x:Key="{x:Type controls:ActionButton}"
+        BasedOn="{StaticResource BaseButtonTheme}"
+        TargetType="controls:ActionButton">
         <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="999" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
         <Style Selector="^:disabled">
-            <Setter Property="BorderBrush" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultBrutalizationShadowBrush}, Index=2}" />
+            <Setter Property="BorderBrush" Value="{Binding Source={StaticResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
         </Style>
         <Setter Property="Template">
             <ControlTemplate>
-                <Border BorderBrush="Transparent" BorderThickness="0" Padding="15">
+                <Border
+                    Padding="15"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
                     <Grid>
-                        <Border 
+                        <Border
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            UseLayoutRounding="True"
+                            Background="{TemplateBinding BorderBrush}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            Background="{TemplateBinding BorderBrush}">
+                            UseLayoutRounding="True">
                             <Border.RenderTransform>
-                                <TranslateTransform X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" 
-                                                    Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
+                                <TranslateTransform X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
                             </Border.RenderTransform>
                         </Border>
                         <Border
                             x:Name="PART_GeneralButtonContainerBorder"
+                            Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="{TemplateBinding CornerRadius}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
                             RenderTransform="translate(0, 0)"
-                            UseLayoutRounding="True"
-                            Padding="{TemplateBinding Padding}">
+                            UseLayoutRounding="True">
                             <Border.Transitions>
                                 <Transitions>
-                                    <TransformOperationsTransition Duration="0:0:0.2" Property="RenderTransform">
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2">
                                         <TransformOperationsTransition.Easing>
                                             <CubicEaseOut />
                                         </TransformOperationsTransition.Easing>
                                     </TransformOperationsTransition>
                                 </Transitions>
                             </Border.Transitions>
-                            <ContentPresenter 
+                            <ContentPresenter
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Content="{TemplateBinding Content}" />

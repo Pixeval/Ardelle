@@ -1,11 +1,11 @@
-<Styles xmlns="https://github.com/avaloniaui">
-  <Styles.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Colors.axaml" />
-        <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Corners.axaml" />
-        <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Controls.axaml" />
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </Styles.Resources>
+﻿<Styles xmlns="https://github.com/avaloniaui">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Colors.axaml" />
+                <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Corners.axaml" />
+                <ResourceInclude Source="avares://Pixeval.Controls.Ardelle/Themes/Controls.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
 </Styles>

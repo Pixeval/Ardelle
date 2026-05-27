@@ -1,27 +1,30 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
-        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <Design.PreviewWith>
         <controls:GhostButton />
     </Design.PreviewWith>
 
-    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:GhostButton}" TargetType="controls:GhostButton">
+    <ControlTheme
+        x:Key="{x:Type controls:GhostButton}"
+        BasedOn="{StaticResource BaseButtonTheme}"
+        TargetType="controls:GhostButton">
         <Setter Property="Background" Value="{StaticResource DefaultGhostButtonEnabledBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Foreground"
-                Value="{markupExtensions:ShiftedColorBrush BaseColor={markupExtensions:ContrastBrush BaseColor={Binding Background, Mode=OneWay, RelativeSource={RelativeSource Self}}}, Index=3}" />
+        <Setter Property="Foreground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter={x:Static markupExtensions:ArdelleConverterParameters.Contrast3}}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border
                     x:Name="PART_GeneralButtonContainerBorder"
+                    Padding="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    Padding="{TemplateBinding Padding}">
-                    <ContentPresenter 
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                         Content="{TemplateBinding Content}" />
@@ -32,15 +35,14 @@
             <Setter Property="Background" Value="{StaticResource DefaultGhostButtonDisabledBackground}" />
             <Setter Property="Cursor" Value="Arrow" />
         </Style>
-        
+
         <Style Selector="^:disabled">
-            <Setter Property="Foreground"
-                    Value="{markupExtensions:ShiftedColorBrush BaseColor={markupExtensions:ContrastBrush BaseColor={Binding Background, Mode=OneWay, RelativeSource={RelativeSource Self}}}, Index=4}" />
+            <Setter Property="Foreground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter={x:Static markupExtensions:ArdelleConverterParameters.Contrast4}}" />
             <Setter Property="Cursor" Value="Arrow" />
         </Style>
-        
+
         <Style Selector="^:pressed/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="Background" Value="{markupExtensions:ShiftedColorBrush BaseColor={StaticResource DefaultGhostButtonEnabledBackground}, Index=2}" />
+            <Setter Property="Background" Value="{Binding Source={StaticResource DefaultGhostButtonEnabledBackground}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
         </Style>
         <Style Selector="^:pointerover">
             <Setter Property="Background" Value="{StaticResource DefaultGhostButtonEnabledHoveredBackground}" />

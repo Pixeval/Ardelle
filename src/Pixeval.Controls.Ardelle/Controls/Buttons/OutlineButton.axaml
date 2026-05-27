@@ -1,30 +1,34 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
-        xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Pixeval.Controls.Ardelle.Controls.Buttons"
+    xmlns:markupExtensions="clr-namespace:Pixeval.Controls.Ardelle.MarkupExtensions">
     <controls:ColorBlendConverter x:Key="ColorBlendConverter" />
     <Design.PreviewWith>
         <controls:OutlineButton />
     </Design.PreviewWith>
 
-    <ControlTheme BasedOn="{StaticResource BaseButtonTheme}" x:Key="{x:Type controls:OutlineButton}" TargetType="controls:OutlineButton">
+    <ControlTheme
+        x:Key="{x:Type controls:OutlineButton}"
+        BasedOn="{StaticResource BaseButtonTheme}"
+        TargetType="controls:OutlineButton">
         <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultOutlineButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{StaticResource DefaultOutlineButtonBorderThickness}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border 
+                <Border
                     x:Name="PART_GeneralButtonContainerBorder"
+                    Padding="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
-                    CornerRadius="{TemplateBinding CornerRadius}" 
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    Padding="{TemplateBinding Padding}">
-                    <ContentPresenter 
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Foreground="{TemplateBinding Foreground}"
-                        Content="{TemplateBinding Content}" />
+                        Content="{TemplateBinding Content}"
+                        Foreground="{TemplateBinding Foreground}" />
                 </Border>
             </ControlTemplate>
         </Setter>
@@ -36,7 +40,7 @@
         </Style>
         <Style Selector="^:disabled">
             <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonDisabledBackground}" />
-            <Setter Property="Foreground" Value="{markupExtensions:ShiftedColorBrush BaseColor={Binding Foreground, Mode=OneTime, RelativeSource={RelativeSource Self}}, Index=4}" />
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=4}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

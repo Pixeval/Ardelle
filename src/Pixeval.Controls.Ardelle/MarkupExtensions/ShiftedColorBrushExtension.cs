@@ -19,52 +19,87 @@
 #endregion
 
 using System.Globalization;
-using Avalonia.Data;
 using Avalonia.Data.Converters;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Pixeval.Controls.Ardelle.Tokens;
 
 namespace Pixeval.Controls.Ardelle.MarkupExtensions;
 
-public class ShiftedColorBrushExtension : MarkupExtension
-{
-    public required object? BaseColor { get; set; }
-    
-    public required int Index { get; set; }
-    
-    public override object ProvideValue(IServiceProvider serviceProvider)
-    {
-        switch (BaseColor)
-        {
-            case Binding binding:
-                var previousConverter = binding.Converter;
-                binding.Converter = new FuncValueConverter<object?, ISolidColorBrush?>(value =>
-                {
-                    var converted = previousConverter is null
-                        ? value
-                        : previousConverter.Convert(value, typeof(object), binding.ConverterParameter, CultureInfo.InvariantCulture);
+public sealed record ShiftedColorBrushConversion(
+    int Index,
+    IValueConverter? BaseConverter = null,
+    object? BaseConverterParameter = null);
 
-                    return converted is ISolidColorBrush brush
-                        ? Convert(brush)
-                        : null;
-                });
-                return binding;
-            case ISolidColorBrush brush:
-                return Convert(brush);
+public static class ArdelleConverterParameters
+{
+    public static ShiftedColorBrushConversion Contrast3 { get; } = new(3, ArdelleConverters.ContrastBrush);
+
+    public static ShiftedColorBrushConversion Contrast4 { get; } = new(4, ArdelleConverters.ContrastBrush);
+}
+
+public sealed class ShiftedColorBrushConverter : IValueConverter
+{
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        var conversion = ResolveConversion(parameter);
+
+        if (conversion.BaseConverter is not null)
+        {
+            value = conversion.BaseConverter.Convert(
+                value,
+                typeof(object),
+                conversion.BaseConverterParameter,
+                culture);
+        }
+
+        var brush = ContrastBrushConverter.TryGetBrush(value);
+        return brush is null ? null : ShiftBrush(brush, conversion.Index);
+    }
+
+    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) =>
+        throw new NotSupportedException();
+
+    private static ShiftedColorBrushConversion ResolveConversion(object? parameter)
+    {
+        if (parameter is ShiftedColorBrushConversion conversion)
+        {
+            return conversion;
+        }
+
+        if (TryGetIndex(parameter, out var index))
+        {
+            return new ShiftedColorBrushConversion(index);
+        }
+
+        throw new ArgumentOutOfRangeException(
+            nameof(parameter),
+            "ConverterParameter must be an integer index or a ShiftedColorBrushConversion.");
+    }
+
+    private static bool TryGetIndex(object? parameter, out int index)
+    {
+        switch (parameter)
+        {
+            case int value:
+                index = value;
+                return true;
+            case string text when int.TryParse(text, CultureInfo.InvariantCulture, out var parsed):
+                index = parsed;
+                return true;
             default:
-                throw new ArgumentOutOfRangeException(nameof(BaseColor));
+                index = 0;
+                return false;
         }
     }
 
-    private ISolidColorBrush Convert(ISolidColorBrush brush)
+    private static ISolidColorBrush ShiftBrush(ISolidColorBrush brush, int index)
     {
-        return Index switch
+        return index switch
         {
             0 => brush,
-            >= -5 and < 0 => brush.Color.Palette.Dimmed[Index + 5].original,
-            > 0 and <= 5 => brush.Color.Palette.Brightened[Index - 1].original,
-            _ => throw new ArgumentOutOfRangeException(nameof(Index), "Index must be between 0 and 10 inclusive.")
+            >= -5 and < 0 => brush.Color.Palette.Dimmed[index + 5].original,
+            > 0 and <= 5 => brush.Color.Palette.Brightened[index - 1].original,
+            _ => throw new ArgumentOutOfRangeException(nameof(index), "Index must be between -5 and 5 inclusive.")
         };
     }
 }
