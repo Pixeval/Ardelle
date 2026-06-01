@@ -1,7 +1,4 @@
-﻿<ResourceDictionary
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
     <Thickness x:Key="DefaultButtonContentMargin">24,14,24,14</Thickness>
@@ -17,8 +14,8 @@
     <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#E3E8EF</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#1A1918</SolidColorBrush>
     <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#C5C5C4</SolidColorBrush>
-    <system:Double x:Key="DefaultIconButtonIconContentSpacing">8</system:Double>
-    <system:Double x:Key="DefaultActionButtonBrutalizationShadowOffset">4</system:Double>
+    <x:Double x:Key="DefaultIconButtonIconContentSpacing">8</x:Double>
+    <x:Double x:Key="DefaultActionButtonBrutalizationShadowOffset">4</x:Double>
     <TransformOperations x:Key="DefaultActionButtonHoverTransform">
         translate(4px, 4px)
     </TransformOperations>

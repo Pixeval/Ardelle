@@ -1,7 +1,7 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+    xmlns:avalonia="using:FluentIcons.Avalonia"
     xmlns:controls="using:Ardelle.Controls.Buttons">
     <Design.PreviewWith>
         <controls:IconButton />
@@ -10,7 +10,7 @@
     <ControlTheme
         x:Key="{x:Type controls:IconButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
-        TargetType="controls:IconButton">
+        TargetType="{x:Type controls:IconButton}">
         <Setter Property="Background" Value="{StaticResource DefaultIconButtonEnabledBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />

@@ -28,11 +28,16 @@ public sealed class FluentIconExtension
     {
         var icon = new FluentIcon();
 
-        if (Icon.HasValue) icon.Icon = Icon.Value;
-        if (IconVariant.HasValue) icon.IconVariant = IconVariant.Value;
-        if (IconSize.HasValue) icon.IconSize = IconSize.Value;
-        if (FontSize.HasValue) icon.FontSize = FontSize.Value;
-        if (Foreground is not null) icon.Foreground = Foreground;
+        if (Icon.HasValue)
+            icon.Icon = Icon.Value;
+        if (IconVariant.HasValue)
+            icon.IconVariant = IconVariant.Value;
+        if (IconSize.HasValue)
+            icon.IconSize = IconSize.Value;
+        if (FontSize.HasValue)
+            icon.FontSize = FontSize.Value;
+        if (Foreground is not null)
+            icon.Foreground = Foreground;
 
         var service = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         if (Foreground is null && service?.TargetObject is TemplatedControl sourceControl)

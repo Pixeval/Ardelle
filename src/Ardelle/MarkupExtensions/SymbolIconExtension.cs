@@ -4,7 +4,6 @@ using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Metadata;
-using Avalonia.Threading;
 using FluentIcons.Avalonia;
 using FluentIcons.Common;
 
@@ -28,10 +27,14 @@ public sealed class SymbolIconExtension
     {
         var icon = new SymbolIcon();
 
-        if (Symbol.HasValue) icon.Symbol = Symbol.Value;
-        if (IconVariant.HasValue) icon.IconVariant = IconVariant.Value;
-        if (FontSize.HasValue) icon.FontSize = FontSize.Value;
-        if (Foreground is not null) icon.Foreground = Foreground;
+        if (Symbol.HasValue)
+            icon.Symbol = Symbol.Value;
+        if (IconVariant.HasValue)
+            icon.IconVariant = IconVariant.Value;
+        if (FontSize.HasValue)
+            icon.FontSize = FontSize.Value;
+        if (Foreground is not null)
+            icon.Foreground = Foreground;
 
         var service = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         if (Foreground is null && service?.TargetObject is TemplatedControl sourceControl)

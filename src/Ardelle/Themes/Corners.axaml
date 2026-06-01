@@ -1,12 +1,9 @@
-﻿<ResourceDictionary
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <CornerRadius x:Key="Pixeval.Radius.None">0</CornerRadius>
-    <CornerRadius x:Key="Pixeval.Radius.XSmall">2</CornerRadius>
-    <CornerRadius x:Key="Pixeval.Radius.Small">4</CornerRadius>
-    <CornerRadius x:Key="Pixeval.Radius.Medium">8</CornerRadius>
-    <CornerRadius x:Key="Pixeval.Radius.Large">12</CornerRadius>
-    <CornerRadius x:Key="Pixeval.Radius.XLarge">20</CornerRadius>
-    <CornerRadius x:Key="Pixeval.Radius.Full">999</CornerRadius>
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <CornerRadius x:Key="Ardelle.Radius.None">0</CornerRadius>
+    <CornerRadius x:Key="Ardelle.Radius.XSmall">2</CornerRadius>
+    <CornerRadius x:Key="Ardelle.Radius.Small">4</CornerRadius>
+    <CornerRadius x:Key="Ardelle.Radius.Medium">8</CornerRadius>
+    <CornerRadius x:Key="Ardelle.Radius.Large">12</CornerRadius>
+    <CornerRadius x:Key="Ardelle.Radius.XLarge">20</CornerRadius>
+    <CornerRadius x:Key="Ardelle.Radius.Full">999</CornerRadius>
 </ResourceDictionary>

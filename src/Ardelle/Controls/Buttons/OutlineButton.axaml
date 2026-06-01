@@ -2,7 +2,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Ardelle.Controls.Buttons"
-    xmlns:markupExtensions="clr-namespace:Ardelle.MarkupExtensions">
+    xmlns:markup="using:Ardelle.MarkupExtensions">
     <controls:ColorBlendConverter x:Key="ColorBlendConverter" />
     <Design.PreviewWith>
         <controls:OutlineButton />
@@ -11,7 +11,7 @@
     <ControlTheme
         x:Key="{x:Type controls:OutlineButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
-        TargetType="controls:OutlineButton">
+        TargetType="{x:Type controls:OutlineButton}">
         <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultOutlineButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{StaticResource DefaultOutlineButtonBorderThickness}" />
@@ -40,7 +40,7 @@
         </Style>
         <Style Selector="^:disabled">
             <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonDisabledBackground}" />
-            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=4}" />
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime, Converter={x:Static markup:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=4}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

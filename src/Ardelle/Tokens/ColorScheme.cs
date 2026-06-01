@@ -46,19 +46,19 @@ public record ColorScheme(
     public SolidColorBrush OnNeutral => NeutralPalette.OnBaseline;
     
     public static ColorScheme GetDefaultColorScheme() => new(
-        PrimaryColor: Application.Current!.TryFindResource("Pixeval.Color.Primary", out var primary)
+        PrimaryColor: Application.Current!.TryFindResource("Ardelle.Color.Primary", out var primary)
             ? (Color) primary!
             : throw new InvalidOperationException("Primary color resource not found."),
-        SecondaryColor: Application.Current!.TryFindResource("Pixeval.Color.Secondary", out var secondary)
+        SecondaryColor: Application.Current!.TryFindResource("Ardelle.Color.Secondary", out var secondary)
             ? (Color) secondary!
             : throw new InvalidOperationException("Secondary color resource not found."),
-        TertiaryColor: Application.Current!.TryFindResource("Pixeval.Color.Tertiary", out var tertiary)
+        TertiaryColor: Application.Current!.TryFindResource("Ardelle.Color.Tertiary", out var tertiary)
             ? (Color) tertiary!
             : throw new InvalidOperationException("Tertiary color resource not found."),
-        ErrorColor: Application.Current!.TryFindResource("Pixeval.Color.Error", out var error)
+        ErrorColor: Application.Current!.TryFindResource("Ardelle.Color.Error", out var error)
             ? (Color) error!
             : throw new InvalidOperationException("Error color resource not found."),
-        NeutralColor: Application.Current!.TryFindResource("Pixeval.Color.Neutral", out var neutral)
+        NeutralColor: Application.Current!.TryFindResource("Ardelle.Color.Neutral", out var neutral)
             ? (Color) neutral!
             : throw new InvalidOperationException("Neutral color resource not found."));
 }

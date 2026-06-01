@@ -1,4 +1,7 @@
-<Styles xmlns="https://github.com/avaloniaui">
+<Styles 
+    x:Class="Ardelle.Themes.ArdelleTheme"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

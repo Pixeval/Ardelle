@@ -2,11 +2,12 @@
     x:Class="Ardelle.Demo.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:themes="using:Ardelle.Themes"
     RequestedThemeVariant="Default">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://Ardelle/Themes/PixevalTheme.axaml" />
+        <themes:ArdelleTheme />
     </Application.Styles>
 </Application>

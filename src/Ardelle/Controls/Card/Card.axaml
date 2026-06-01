@@ -1,9 +1,9 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:attachedProperties="clr-namespace:Ardelle.AttachedProperties"
+    xmlns:attachedProperties="using:Ardelle.AttachedProperties"
     xmlns:controls="using:Ardelle.Controls.Card"
-    xmlns:markupExtensions="clr-namespace:Ardelle.MarkupExtensions">
+    xmlns:markup="using:Ardelle.MarkupExtensions">
     <Design.PreviewWith>
         <controls:Card
             Width="500"
@@ -11,24 +11,24 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             attachedProperties:Brutalization.IsBrutalized="True"
-            Background="{markupExtensions:ColorToken Name=Secondary}">
+            Background="{markup:ColorToken Name=Secondary}">
             <TextBlock
                 Background="Red"
                 FontSize="24"
-                Foreground="{markupExtensions:ColorToken Name=OnSecondary}"
+                Foreground="{markup:ColorToken Name=OnSecondary}"
                 Text="Brutalized Card" />
         </controls:Card>
     </Design.PreviewWith>
 
-    <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
+    <ControlTheme x:Key="{x:Type controls:Card}" TargetType="{x:Type controls:Card}">
         <Setter Property="Background" Value="{StaticResource DefaultCardBackground}" />
-        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
+        <Setter Property="CornerRadius" Value="{StaticResource Ardelle.Radius.Large}" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultCardBorderBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
 
         <Setter Property="Template">
-            <ControlTemplate TargetType="controls:Card">
+            <ControlTemplate TargetType="{x:Type controls:Card}">
                 <Grid Margin="{StaticResource CardContainerGridMargin}" Background="Transparent">
                     <Border
                         x:Name="PART_BackgroundBorder"
