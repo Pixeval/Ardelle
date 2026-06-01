@@ -12,15 +12,17 @@
         x:Key="{x:Type controls:ActionIconButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="{x:Type controls:ActionIconButton}">
-        <Setter Property="Background" Value="{StaticResource Ardelle.Color.Primary}" />
+        <Setter Property="Background" Value="{DynamicResource Ardelle.Brush.Primary}" />
         <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="CornerRadius" Value="999" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Setter Property="CornerRadius" Value="{StaticResource Ardelle.Radius.Full}" />
+        <Setter Property="Foreground" Value="{DynamicResource Ardelle.Brush.OnPrimary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultBrutalizationShadowBrush}" />
         <Style Selector="^[IsLabelCollapsed=true]">
             <Setter Property="Padding" Value="14" />
         </Style>
         <Style Selector="^:disabled">
-            <Setter Property="BorderBrush" Value="{Binding Source={StaticResource DefaultBrutalizationShadowBrush}, Converter={x:Static markup:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
+            <Setter Property="Background" Value="{DynamicResource Ardelle.Brush.DisabledSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.DisabledOutline}" />
         </Style>
         <Style Selector="^ /template/ avalonia|FluentIcon">
             <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -29,10 +31,11 @@
             <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate TargetType="{x:Type controls:ActionIconButton}">
                 <Border
-                    Padding="15"
-                    BorderBrush="Transparent"
+                    Padding="{StaticResource DefaultButtonChromePadding}"
+                    Background="{DynamicResource Ardelle.Brush.Transparent}"
+                    BorderBrush="{DynamicResource Ardelle.Brush.Transparent}"
                     BorderThickness="0">
                     <Grid>
                         <Border
@@ -42,7 +45,7 @@
                             CornerRadius="{TemplateBinding CornerRadius}"
                             UseLayoutRounding="True">
                             <Border.RenderTransform>
-                                <TranslateTransform X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
+                                <TranslateTransform X="{StaticResource DefaultButtonShadowOffset}" Y="{StaticResource DefaultButtonShadowOffset}" />
                             </Border.RenderTransform>
                         </Border>
                         <Border
@@ -84,8 +87,17 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Ardelle.Brush.PrimaryHover}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource Ardelle.Brush.PrimaryPressed}" />
+        </Style>
         <Style Selector="^:pointerover/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="RenderTransform" Value="{StaticResource DefaultActionButtonHoverTransform}" />
+            <Setter Property="RenderTransform" Value="{StaticResource DefaultButtonHoverTransform}" />
+        </Style>
+        <Style Selector="^:pressed/template/Border#PART_GeneralButtonContainerBorder">
+            <Setter Property="RenderTransform" Value="{StaticResource DefaultButtonPressedTransform}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

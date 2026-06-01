@@ -1,22 +1,13 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#1A1918</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#C5C5C4</SolidColorBrush>
+    <Thickness x:Key="DefaultButtonChromePadding">0,0,4,4</Thickness>
     <Thickness x:Key="DefaultButtonContentMargin">24,14,24,14</Thickness>
-    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">White</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#F1F1EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#F4F4F5</SolidColorBrush>
-    <Thickness x:Key="DefaultOutlineButtonBorderThickness">1</Thickness>
-    <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#E5E4E2</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#E4E4E7</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#F1F1EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#F1F1EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#F2F5F9</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#E3E8EF</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#1A1918</SolidColorBrush>
-    <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#C5C5C4</SolidColorBrush>
-    <x:Double x:Key="DefaultIconButtonIconContentSpacing">8</x:Double>
-    <x:Double x:Key="DefaultActionButtonBrutalizationShadowOffset">4</x:Double>
-    <TransformOperations x:Key="DefaultActionButtonHoverTransform">
+    <Thickness x:Key="DefaultOutlineButtonBorderThickness">2</Thickness>
+    <x:Double x:Key="DefaultIconButtonIconContentSpacing">10</x:Double>
+    <x:Double x:Key="DefaultButtonShadowOffset">4</x:Double>
+    <TransformOperations x:Key="DefaultButtonHoverTransform">
+        translate(2px, 2px)
+    </TransformOperations>
+    <TransformOperations x:Key="DefaultButtonPressedTransform">
         translate(4px, 4px)
     </TransformOperations>
 </ResourceDictionary>

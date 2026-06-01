@@ -12,18 +12,19 @@
         x:Key="{x:Type controls:OutlineButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="{x:Type controls:OutlineButton}">
-        <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultOutlineButtonBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DefaultOutlineButtonEnabledBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultOutlineButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{StaticResource DefaultOutlineButtonBorderThickness}" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate TargetType="{x:Type controls:OutlineButton}">
                 <Border
                     x:Name="PART_GeneralButtonContainerBorder"
                     Padding="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    UseLayoutRounding="True">
                     <ContentPresenter
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -33,14 +34,16 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledHoveredBackground}" />
+            <Setter Property="Background" Value="{DynamicResource DefaultOutlineButtonEnabledHoveredBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.OutlineStrong}" />
         </Style>
         <Style Selector="^:pressed">
-            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledPressedBackground}" />
+            <Setter Property="Background" Value="{DynamicResource DefaultOutlineButtonEnabledPressedBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.OutlineStrong}" />
         </Style>
         <Style Selector="^:disabled">
-            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonDisabledBackground}" />
-            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime, Converter={x:Static markup:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=4}" />
+            <Setter Property="Background" Value="{DynamicResource DefaultOutlineButtonDisabledBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.DisabledOutline}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

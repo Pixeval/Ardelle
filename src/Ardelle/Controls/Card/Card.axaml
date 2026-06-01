@@ -11,31 +11,52 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             attachedProperties:Brutalization.IsBrutalized="True"
-            Background="{markup:ColorToken Name=Secondary}">
+            Background="{DynamicResource Ardelle.Brush.Secondary}">
             <TextBlock
-                Background="Red"
                 FontSize="24"
-                Foreground="{markup:ColorToken Name=OnSecondary}"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource Ardelle.Brush.OnSecondary}"
                 Text="Brutalized Card" />
         </controls:Card>
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type controls:Card}" TargetType="{x:Type controls:Card}">
-        <Setter Property="Background" Value="{StaticResource DefaultCardBackground}" />
-        <Setter Property="CornerRadius" Value="{StaticResource Ardelle.Radius.Large}" />
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultCardBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DefaultCardBackground}" />
+        <Setter Property="CornerRadius" Value="{StaticResource Ardelle.Radius.XLarge}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultCardBorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Ardelle.Brush.TextPrimary}" />
+        <Setter Property="Padding" Value="24" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
 
         <Setter Property="Template">
             <ControlTemplate TargetType="{x:Type controls:Card}">
-                <Grid Margin="{StaticResource CardContainerGridMargin}" Background="Transparent">
+                <Grid Margin="{StaticResource CardContainerGridMargin}" Background="{DynamicResource Ardelle.Brush.Transparent}">
+                    <Border
+                        Background="{DynamicResource DefaultBrutalizationShadowBrush}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        UseLayoutRounding="True">
+                        <Border.RenderTransform>
+                            <TranslateTransform X="{StaticResource DefaultCardShadowOffset}" Y="{StaticResource DefaultCardShadowOffset}" />
+                        </Border.RenderTransform>
+                    </Border>
                     <Border
                         x:Name="PART_BackgroundBorder"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{StaticResource DefaultCardBorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        RenderTransform="translate(0, 0)"
+                        UseLayoutRounding="True">
+                        <Border.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.18">
+                                    <TransformOperationsTransition.Easing>
+                                        <CubicEaseOut />
+                                    </TransformOperationsTransition.Easing>
+                                </TransformOperationsTransition>
+                            </Transitions>
+                        </Border.Transitions>
                         <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
                             <ContentPresenter
                                 x:Name="PART_ContentPresenter"
@@ -48,5 +69,12 @@
                 </Grid>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^:pointerover/template/Border#PART_BackgroundBorder">
+            <Setter Property="RenderTransform" Value="{StaticResource DefaultCardHoverTransform}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource Ardelle.Brush.DisabledSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.DisabledOutline}" />
+        </Style>
     </ControlTheme>
 </ResourceDictionary>

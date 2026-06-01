@@ -11,19 +11,20 @@
         x:Key="{x:Type controls:GhostButton}"
         BasedOn="{StaticResource BaseButtonTheme}"
         TargetType="{x:Type controls:GhostButton}">
-        <Setter Property="Background" Value="{StaticResource DefaultGhostButtonEnabledBackground}" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource DefaultGhostButtonEnabledBackground}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.Transparent}" />
         <Setter Property="Foreground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={x:Static markup:ArdelleConverters.ShiftedColorBrush}, ConverterParameter={x:Static markup:ArdelleConverterParameters.Contrast3}}" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate TargetType="{x:Type controls:GhostButton}">
                 <Border
                     x:Name="PART_GeneralButtonContainerBorder"
                     Padding="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    UseLayoutRounding="True">
                     <ContentPresenter
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -31,21 +32,17 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^:disabled/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="Background" Value="{StaticResource DefaultGhostButtonDisabledBackground}" />
-            <Setter Property="Cursor" Value="Arrow" />
-        </Style>
-
         <Style Selector="^:disabled">
-            <Setter Property="Foreground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={x:Static markup:ArdelleConverters.ShiftedColorBrush}, ConverterParameter={x:Static markup:ArdelleConverterParameters.Contrast4}}" />
-            <Setter Property="Cursor" Value="Arrow" />
-        </Style>
-
-        <Style Selector="^:pressed/template/Border#PART_GeneralButtonContainerBorder">
-            <Setter Property="Background" Value="{Binding Source={StaticResource DefaultGhostButtonEnabledBackground}, Converter={x:Static markup:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
+            <Setter Property="Background" Value="{DynamicResource DefaultGhostButtonDisabledBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Ardelle.Brush.DisabledOutline}" />
         </Style>
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{StaticResource DefaultGhostButtonEnabledHoveredBackground}" />
+            <Setter Property="Background" Value="{DynamicResource DefaultGhostButtonEnabledHoveredBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource DefaultOutlineButtonBorderBrush}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource DefaultGhostButtonEnabledPressedBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource DefaultOutlineButtonBorderBrush}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

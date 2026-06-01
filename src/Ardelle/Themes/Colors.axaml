@@ -1,8 +1,229 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="Ardelle.Color.Primary">#FF3366</Color>
-    <Color x:Key="Ardelle.Color.Secondary">#4F46E5</Color>
-    <Color x:Key="Ardelle.Color.Tertiary">#8364CE</Color>
-    <Color x:Key="Ardelle.Color.Neutral">#FDFCFA</Color>
-    <Color x:Key="Ardelle.Color.Error">#FF0033</Color>
-    <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#1A1918</SolidColorBrush>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="Ardelle.Color.Transparent">#00FFFFFF</Color>
+            <Color x:Key="Ardelle.Color.Primary">#FF3D8E</Color>
+            <Color x:Key="Ardelle.Color.Secondary">#1FBEC4</Color>
+            <Color x:Key="Ardelle.Color.Tertiary">#F4B63F</Color>
+            <Color x:Key="Ardelle.Color.Neutral">#FFF7F0</Color>
+            <Color x:Key="Ardelle.Color.Error">#FF5A6A</Color>
+
+            <SolidColorBrush x:Key="Ardelle.Brush.Transparent">#00FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Background">#FFF4EC</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.BackgroundAlt">#FFF9F4</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Surface">#FFFFFB</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.SurfaceRaised">#FFFFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.SurfaceMuted">#FFF0E5</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.SurfaceInverse">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.TextPrimary">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.TextSecondary">#5C6578</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.TextSubtle">#939BAD</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Outline">#DDD6CE</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OutlineStrong">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Primary">#FF3D8E</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.PrimaryHover">#FF5CA1</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.PrimaryPressed">#E1327D</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.PrimaryMuted">#FFD4E5</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnPrimary">#FFF8F2</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Secondary">#1FBEC4</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnSecondary">#12242C</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Tertiary">#F4B63F</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnTertiary">#2F2103</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnNeutral">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Error">#FF5A6A</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnError">#FFF6F7</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.DisabledSurface">#E7DED5</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.DisabledText">#A29A92</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.DisabledOutline">#CCC3BA</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Shadow">#202534</SolidColorBrush>
+
+            <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonEnabledHoveredBackground">#2B3243</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonEnabledPressedBackground">#394154</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#E7DED5</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">#FFFFFB</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#FFF0E5</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#FFF7F8</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#DDD6CE</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#FFEDEE</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#FFF0E5</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#FFF0E5</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#FFE8F2</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#FFDDEB</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#202534</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#E7DED5</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardBackground">#FFFFFB</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardHoveredBackground">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardBorderBrush">#DDD6CE</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.HeroBadge">#FF3D8E</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.HeroForeground">#FFF8F2</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.HeroMutedForeground">#CFD4DF</SolidColorBrush>
+
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.HeroBackdrop" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFCCD1D7" Offset="0" />
+                <GradientStop Color="#FF8B919B" Offset="0.38" />
+                <GradientStop Color="#FF2D313B" Offset="0.72" />
+                <GradientStop Color="#FF111319" Offset="1" />
+            </LinearGradientBrush>
+            <RadialGradientBrush x:Key="Ardelle.Demo.Brush.HeroGlow" Center="0.78,0.26" GradientOrigin="0.78,0.26" RadiusX="0.52" RadiusY="0.52">
+                <GradientStop Color="#55FFFFFF" Offset="0" />
+                <GradientStop Color="#00FFFFFF" Offset="1" />
+            </RadialGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover01" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFF15A38" Offset="0" />
+                <GradientStop Color="#FFF7A14A" Offset="0.26" />
+                <GradientStop Color="#FF15B1D2" Offset="0.66" />
+                <GradientStop Color="#FF2F3A90" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover02" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFFF1D8" Offset="0" />
+                <GradientStop Color="#FFF6DCC0" Offset="0.5" />
+                <GradientStop Color="#FFEAD0BD" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover03" StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#FF2BE6FF" Offset="0" />
+                <GradientStop Color="#FF072B34" Offset="0.32" />
+                <GradientStop Color="#FF031116" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover04" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FF3DC7D0" Offset="0" />
+                <GradientStop Color="#FFF4E49B" Offset="0.56" />
+                <GradientStop Color="#FF1A4D71" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover05" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFFFFFF" Offset="0" />
+                <GradientStop Color="#FFF2F2F0" Offset="0.62" />
+                <GradientStop Color="#FFE6E7EA" Offset="1" />
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.TagCyberpunk">#6051E8</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.OnTagCyberpunk">#FFF7F8</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.TagSciFi">#22C98E</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.OnTagSciFi">#062018</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.TagCompleted">#F6B43B</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.OnTagCompleted">#322203</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.ReaderRailBackground">#FFFCF7</SolidColorBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Universe01" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF4B447E" Offset="0" />
+                <GradientStop Color="#FF312A57" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Universe02" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF1C5662" Offset="0" />
+                <GradientStop Color="#FF143B43" Offset="1" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="Ardelle.Color.Transparent">#00FFFFFF</Color>
+            <Color x:Key="Ardelle.Color.Primary">#FF5EA5</Color>
+            <Color x:Key="Ardelle.Color.Secondary">#39D7D6</Color>
+            <Color x:Key="Ardelle.Color.Tertiary">#FFC968</Color>
+            <Color x:Key="Ardelle.Color.Neutral">#171C25</Color>
+            <Color x:Key="Ardelle.Color.Error">#FF7C87</Color>
+
+            <SolidColorBrush x:Key="Ardelle.Brush.Transparent">#00FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Background">#101319</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.BackgroundAlt">#151922</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Surface">#171C25</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.SurfaceRaised">#1E2430</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.SurfaceMuted">#222938</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.SurfaceInverse">#F8F2EA</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.TextPrimary">#F8F2EA</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.TextSecondary">#C0C8D8</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.TextSubtle">#8F98AA</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Outline">#363D4D</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OutlineStrong">#F8F2EA</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Primary">#FF5EA5</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.PrimaryHover">#FF7AB7</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.PrimaryPressed">#E54A91</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.PrimaryMuted">#713050</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnPrimary">#FFF8F1</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Secondary">#39D7D6</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnSecondary">#08191A</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Tertiary">#FFC968</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnTertiary">#241A05</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnNeutral">#F8F2EA</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Error">#FF7C87</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.OnError">#1E0A0C</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.DisabledSurface">#2B303B</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.DisabledText">#747B8B</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.DisabledOutline">#414755</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Brush.Shadow">#07090E</SolidColorBrush>
+
+            <SolidColorBrush x:Key="DefaultBrutalizationShadowBrush">#07090E</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonEnabledBackground">#F8F2EA</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonEnabledHoveredBackground">#FFF8EF</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonEnabledPressedBackground">#E8DFD4</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultButtonDisabledBackground">#2B303B</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledBackground">#171C25</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonDisabledBackground">#222938</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledHoveredBackground">#202634</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonBorderBrush">#363D4D</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultOutlineButtonEnabledPressedBackground">#262D3E</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledBackground">#222938</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonDisabledBackground">#222938</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledHoveredBackground">#2A3143</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultGhostButtonEnabledPressedBackground">#31394E</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonEnabledBackground">#F8F2EA</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultIconButtonDisabledBackground">#2B303B</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardBackground">#171C25</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardHoveredBackground">#1E2430</SolidColorBrush>
+            <SolidColorBrush x:Key="DefaultCardBorderBrush">#363D4D</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.HeroBadge">#FF5EA5</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.HeroForeground">#FFF8F1</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.HeroMutedForeground">#C1C8D5</SolidColorBrush>
+
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.HeroBackdrop" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF404854" Offset="0" />
+                <GradientStop Color="#FF232932" Offset="0.42" />
+                <GradientStop Color="#FF131821" Offset="0.74" />
+                <GradientStop Color="#FF090C11" Offset="1" />
+            </LinearGradientBrush>
+            <RadialGradientBrush x:Key="Ardelle.Demo.Brush.HeroGlow" Center="0.78,0.24" GradientOrigin="0.78,0.24" RadiusX="0.54" RadiusY="0.54">
+                <GradientStop Color="#40FFFFFF" Offset="0" />
+                <GradientStop Color="#00FFFFFF" Offset="1" />
+            </RadialGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover01" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFF06039" Offset="0" />
+                <GradientStop Color="#FFF6A54C" Offset="0.22" />
+                <GradientStop Color="#FF1CC4DD" Offset="0.64" />
+                <GradientStop Color="#FF2C377D" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover02" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFF8E9CC" Offset="0" />
+                <GradientStop Color="#FFEBD0B1" Offset="0.5" />
+                <GradientStop Color="#FFCFB49F" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover03" StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#FF63E8FF" Offset="0" />
+                <GradientStop Color="#FF0B313C" Offset="0.3" />
+                <GradientStop Color="#FF030D12" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover04" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FF41CAD5" Offset="0" />
+                <GradientStop Color="#FFF3E9A1" Offset="0.55" />
+                <GradientStop Color="#FF174769" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Cover05" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFF7F2EB" Offset="0" />
+                <GradientStop Color="#FFEEE5DA" Offset="0.64" />
+                <GradientStop Color="#FFD7D3D0" Offset="1" />
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.TagCyberpunk">#7765FF</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.OnTagCyberpunk">#090610</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.TagSciFi">#2ADEA0</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.OnTagSciFi">#02150F</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.TagCompleted">#FFC14D</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.OnTagCompleted">#271B03</SolidColorBrush>
+            <SolidColorBrush x:Key="Ardelle.Demo.Brush.ReaderRailBackground">#151A22</SolidColorBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Universe01" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF3E396A" Offset="0" />
+                <GradientStop Color="#FF2A254B" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="Ardelle.Demo.Brush.Universe02" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF174A55" Offset="0" />
+                <GradientStop Color="#FF102F36" Offset="1" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

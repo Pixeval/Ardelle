@@ -8,15 +8,696 @@
     xmlns:markupExtensions="using:Ardelle.MarkupExtensions"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:CompileBindings="False"
-    Title="Ardelle.Demo"
+    Background="{DynamicResource Ardelle.Brush.Background}"
+    Height="1100"
+    MinHeight="820"
+    MinWidth="1180"
+    Title="Ardelle Neo Material Demo"
+    Width="1480"
     mc:Ignorable="d"
-    d:DesignHeight="450"
-    d:DesignWidth="800">
-    <Grid>
-        <buttons:ActionIconButton
-            Content="Press Me!"
-            Icon="{markupExtensions:SymbolIcon Save}"
-            IsEnabled="True"
-            IsLabelCollapsed="True" />
+    d:DesignHeight="1100"
+    d:DesignWidth="1480">
+    <Grid Background="{DynamicResource Ardelle.Brush.Background}">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+            <StackPanel
+                MaxWidth="1380"
+                Margin="32"
+                HorizontalAlignment="Center"
+                Spacing="28">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="24">
+                    <StackPanel Spacing="6">
+                        <TextBlock
+                            FontSize="38"
+                            FontWeight="ExtraBold"
+                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                            Text="Ardelle" />
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                            Text="Neo brutalism and material tokens applied to the first wave of core controls." />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        Spacing="12"
+                        VerticalAlignment="Center">
+                        <buttons:OutlineButton
+                            x:Name="ThemeToggleButton"
+                            Click="OnThemeToggleClick"
+                            Content="Switch to Dark" />
+                        <buttons:GhostButton
+                            x:Name="SystemThemeButton"
+                            Click="OnUseSystemThemeClick"
+                            Content="Follow System" />
+                    </StackPanel>
+                </Grid>
+
+                <card:Card
+                    Background="{DynamicResource Ardelle.Demo.Brush.HeroBackdrop}"
+                    BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                    Height="340"
+                    Padding="36">
+                    <Grid ColumnDefinitions="3.2*,2*" ColumnSpacing="32">
+                        <StackPanel Spacing="18">
+                            <Border
+                                Padding="12,6"
+                                Background="{DynamicResource Ardelle.Demo.Brush.HeroBadge}"
+                                CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                HorizontalAlignment="Left">
+                                <TextBlock
+                                    FontSize="12"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Ardelle.Demo.Brush.HeroForeground}"
+                                    Text="SPOTLIGHT" />
+                            </Border>
+
+                            <TextBlock
+                                FontSize="54"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Ardelle.Demo.Brush.HeroForeground}"
+                                Text="Neon Resonance" />
+
+                            <TextBlock
+                                FontSize="20"
+                                Foreground="{DynamicResource Ardelle.Demo.Brush.HeroMutedForeground}"
+                                MaxWidth="620"
+                                Text="In the sprawling metropolis of Neo-Kyoto, a rogue archivist discovers a memory cache that could unravel the city's synthetic foundation."
+                                TextWrapping="Wrap" />
+
+                            <StackPanel Orientation="Horizontal" Spacing="16">
+                                <buttons:ActionButton Content="Read Now" />
+                                <buttons:OutlineButton Content="Save" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Grid Grid.Column="1">
+                            <Border
+                                Margin="70,26,24,84"
+                                Background="{DynamicResource Ardelle.Demo.Brush.HeroGlow}"
+                                CornerRadius="180" />
+
+                            <StackPanel
+                                HorizontalAlignment="Center"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+                                <Border
+                                    Width="184"
+                                    Height="228"
+                                    Background="{DynamicResource Ardelle.Demo.Brush.Cover03}"
+                                    BorderBrush="{DynamicResource Ardelle.Brush.SurfaceRaised}"
+                                    BorderThickness="2"
+                                    CornerRadius="{StaticResource Ardelle.Radius.XLarge}">
+                                    <Grid>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="28"
+                                            FontWeight="Black"
+                                            Foreground="{DynamicResource Ardelle.Demo.Brush.HeroMutedForeground}"
+                                            Opacity="0.45"
+                                            Text="ARCHIVE" />
+                                    </Grid>
+                                </Border>
+
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="{DynamicResource Ardelle.Demo.Brush.HeroMutedForeground}"
+                                    HorizontalAlignment="Center"
+                                    Text="SYS.REBOOT // LIVE ARCHIVE" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </card:Card>
+
+                <StackPanel Spacing="18">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                        <StackPanel Spacing="4">
+                            <TextBlock
+                                FontSize="30"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                Text="Daily Ranks" />
+                            <TextBlock
+                                FontSize="15"
+                                Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                Text="Cover treatments and cards share the same token system as the controls." />
+                        </StackPanel>
+
+                        <buttons:GhostButton
+                            Grid.Column="1"
+                            Content="View All"
+                            VerticalAlignment="Center" />
+                    </Grid>
+
+                    <ScrollViewer
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal" Spacing="18">
+                            <card:Card Padding="0" Width="220">
+                                <Grid RowDefinitions="188,Auto">
+                                    <Grid Height="188">
+                                        <Border
+                                            Background="{DynamicResource Ardelle.Demo.Brush.Cover01}"
+                                            CornerRadius="20,20,0,0" />
+                                        <Border
+                                            Width="36"
+                                            Height="36"
+                                            Margin="14"
+                                            Background="{DynamicResource Ardelle.Brush.Tertiary}"
+                                            BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                                            BorderThickness="2"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource Ardelle.Brush.OnTertiary}"
+                                                Text="1" />
+                                        </Border>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="1" Margin="18,16,18,18" Spacing="4">
+                                        <TextBlock
+                                            FontSize="20"
+                                            FontWeight="SemiBold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="Ethereal Protocol" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                            Text="Sci-Fi • 4.9" />
+                                    </StackPanel>
+                                </Grid>
+                            </card:Card>
+
+                            <card:Card Padding="0" Width="220">
+                                <Grid RowDefinitions="188,Auto">
+                                    <Grid Height="188">
+                                        <Border
+                                            Background="{DynamicResource Ardelle.Demo.Brush.Cover02}"
+                                            CornerRadius="20,20,0,0" />
+                                        <Canvas>
+                                            <Ellipse
+                                                Width="106"
+                                                Height="106"
+                                                Canvas.Left="56"
+                                                Canvas.Top="50"
+                                                Fill="{DynamicResource Ardelle.Brush.Tertiary}" />
+                                            <Ellipse
+                                                Width="84"
+                                                Height="84"
+                                                Canvas.Left="100"
+                                                Canvas.Top="96"
+                                                Fill="{DynamicResource Ardelle.Brush.Secondary}" />
+                                            <Ellipse
+                                                Width="42"
+                                                Height="42"
+                                                Canvas.Left="146"
+                                                Canvas.Top="46"
+                                                Fill="{DynamicResource Ardelle.Brush.PrimaryMuted}" />
+                                        </Canvas>
+                                        <Border
+                                            Width="36"
+                                            Height="36"
+                                            Margin="14"
+                                            Background="{DynamicResource Ardelle.Brush.Tertiary}"
+                                            BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                                            BorderThickness="2"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource Ardelle.Brush.OnTertiary}"
+                                                Text="2" />
+                                        </Border>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="1" Margin="18,16,18,18" Spacing="4">
+                                        <TextBlock
+                                            FontSize="20"
+                                            FontWeight="SemiBold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="Silent Vector" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                            Text="Mystery • 4.8" />
+                                    </StackPanel>
+                                </Grid>
+                            </card:Card>
+
+                            <card:Card Padding="0" Width="220">
+                                <Grid RowDefinitions="188,Auto">
+                                    <Grid Height="188">
+                                        <Border
+                                            Background="{DynamicResource Ardelle.Demo.Brush.Cover03}"
+                                            CornerRadius="20,20,0,0" />
+                                        <Ellipse
+                                            Width="110"
+                                            Height="110"
+                                            Fill="{DynamicResource Ardelle.Demo.Brush.HeroGlow}"
+                                            HorizontalAlignment="Center"
+                                            Margin="0,12,0,0"
+                                            VerticalAlignment="Top" />
+                                        <Border
+                                            Height="8"
+                                            Margin="34,0"
+                                            Background="{DynamicResource Ardelle.Brush.SurfaceRaised}"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                            Opacity="0.65"
+                                            VerticalAlignment="Bottom" />
+                                        <Border
+                                            Width="36"
+                                            Height="36"
+                                            Margin="14"
+                                            Background="{DynamicResource Ardelle.Brush.Tertiary}"
+                                            BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                                            BorderThickness="2"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource Ardelle.Brush.OnTertiary}"
+                                                Text="3" />
+                                        </Border>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="1" Margin="18,16,18,18" Spacing="4">
+                                        <TextBlock
+                                            FontSize="20"
+                                            FontWeight="SemiBold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="The Onyx Crown" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                            Text="Fantasy • 4.7" />
+                                    </StackPanel>
+                                </Grid>
+                            </card:Card>
+
+                            <card:Card Padding="0" Width="220">
+                                <Grid RowDefinitions="188,Auto">
+                                    <Grid Height="188">
+                                        <Border
+                                            Background="{DynamicResource Ardelle.Demo.Brush.Cover04}"
+                                            CornerRadius="20,20,0,0" />
+                                        <Border
+                                            Height="54"
+                                            Background="{DynamicResource Ardelle.Brush.SurfaceInverse}"
+                                            CornerRadius="26"
+                                            Margin="40,0,40,22"
+                                            Opacity="0.18"
+                                            VerticalAlignment="Bottom" />
+                                        <Border
+                                            Width="36"
+                                            Height="36"
+                                            Margin="14"
+                                            Background="{DynamicResource Ardelle.Brush.SurfaceRaised}"
+                                            BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                                            BorderThickness="2"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                                Text="4" />
+                                        </Border>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="1" Margin="18,16,18,18" Spacing="4">
+                                        <TextBlock
+                                            FontSize="20"
+                                            FontWeight="SemiBold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="Solar Drift" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                            Text="Adventure • 4.5" />
+                                    </StackPanel>
+                                </Grid>
+                            </card:Card>
+
+                            <card:Card Padding="0" Width="220">
+                                <Grid RowDefinitions="188,Auto">
+                                    <Grid Height="188">
+                                        <Border
+                                            Background="{DynamicResource Ardelle.Demo.Brush.Cover05}"
+                                            CornerRadius="20,20,0,0" />
+                                        <Border
+                                            Margin="24"
+                                            Background="{DynamicResource Ardelle.Brush.SurfaceRaised}"
+                                            BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                            BorderThickness="2"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Large}" />
+                                        <Border
+                                            Width="36"
+                                            Height="36"
+                                            Margin="14"
+                                            Background="{DynamicResource Ardelle.Brush.SurfaceRaised}"
+                                            BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                            BorderThickness="2"
+                                            CornerRadius="{StaticResource Ardelle.Radius.Full}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                                Text="5" />
+                                        </Border>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="1" Margin="18,16,18,18" Spacing="4">
+                                        <TextBlock
+                                            FontSize="20"
+                                            FontWeight="SemiBold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="Chromatic Bloom" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                            Text="Drama • 4.4" />
+                                    </StackPanel>
+                                </Grid>
+                            </card:Card>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+
+                <card:Card Padding="28">
+                    <StackPanel Spacing="24">
+                        <StackPanel Spacing="4">
+                            <TextBlock
+                                FontSize="30"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                Text="Core Controls" />
+                            <TextBlock
+                                FontSize="15"
+                                Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                Text="Primary, outline, ghost and icon-bearing variants all consume the same theme resources." />
+                        </StackPanel>
+
+                        <Border
+                            Padding="20"
+                            Background="{DynamicResource Ardelle.Brush.SurfaceMuted}"
+                            BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                            BorderThickness="2"
+                            CornerRadius="{StaticResource Ardelle.Radius.XLarge}">
+                            <StackPanel Spacing="18">
+                                <StackPanel Orientation="Horizontal" Spacing="16">
+                                    <buttons:Button Content="Default" />
+                                    <buttons:OutlineButton Content="Outline" />
+                                    <buttons:GhostButton Content="Ghost" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Spacing="16">
+                                    <buttons:IconButton
+                                        Content="Quick Save"
+                                        Icon="{markupExtensions:SymbolIcon Save}" />
+                                    <buttons:ActionButton Content="Launch Scene" />
+                                    <buttons:ActionIconButton
+                                        Content="Save"
+                                        Icon="{markupExtensions:SymbolIcon Save}" />
+                                    <buttons:ActionIconButton
+                                        Icon="{markupExtensions:SymbolIcon Save}"
+                                        IsLabelCollapsed="True" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Spacing="16">
+                                    <buttons:Button Content="Disabled" IsEnabled="False" />
+                                    <buttons:OutlineButton Content="Disabled" IsEnabled="False" />
+                                    <buttons:GhostButton Content="Disabled" IsEnabled="False" />
+                                    <buttons:IconButton
+                                        Content="Disabled"
+                                        Icon="{markupExtensions:SymbolIcon Save}"
+                                        IsEnabled="False" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </card:Card>
+
+                <StackPanel Spacing="18">
+                    <StackPanel Spacing="4">
+                        <TextBlock
+                            FontSize="30"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                            Text="Reader Preview" />
+                        <TextBlock
+                            FontSize="15"
+                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                            Text="The same palette drives a denser layout with metadata chips, supporting cards and a long-form reading surface." />
+                    </StackPanel>
+
+                    <card:Card Padding="0">
+                        <Grid ColumnDefinitions="2.2*,1*">
+                            <Border Padding="36">
+                                <StackPanel Spacing="22">
+                                    <TextBlock
+                                        FontSize="13"
+                                        Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                        Text="&lt; Back to Index" />
+
+                                    <StackPanel Spacing="6">
+                                        <TextBlock
+                                            FontSize="52"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="The Neon Horizon" />
+                                        <TextBlock
+                                            FontSize="12"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSubtle}"
+                                            Text="CHAPTER 04: SYS_REBOOT" />
+                                    </StackPanel>
+
+                                    <TextBlock
+                                        FontSize="19"
+                                        Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                        LineHeight="32"
+                                        Text="The rain fell in sheets across the neo-concrete sprawl, washing a day's worth of static from the elevated walkways. Kael watched the city smear into neon ribbons beyond the transit rail and checked the dead drop again."
+                                        TextWrapping="Wrap" />
+
+                                    <TextBlock
+                                        FontSize="19"
+                                        Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                        LineHeight="32"
+                                        Text="He was late, and in a city obsessed with synchronization that mattered. The archive key in his coat pocket felt heavier than circuitry had any right to, like a physical anchor in a world already dissolving into pure information."
+                                        TextWrapping="Wrap" />
+
+                                    <TextBlock
+                                        FontSize="19"
+                                        Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                        LineHeight="32"
+                                        Text="As he slipped beneath the awning of an abandoned noodle bar, the shadows bent with the passing of a surveillance drone. Somewhere above, a speaker crackled with a clipped voice: Keep moving. They know the file was accessed."
+                                        TextWrapping="Wrap" />
+
+                                    <StackPanel
+                                        HorizontalAlignment="Center"
+                                        Orientation="Horizontal"
+                                        Spacing="12">
+                                        <buttons:GhostButton Content="Prev Chapter" />
+                                        <buttons:OutlineButton Content="Ch 4 • 35%" />
+                                        <buttons:ActionButton Content="Sync Progress" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                Padding="28"
+                                Background="{DynamicResource Ardelle.Demo.Brush.ReaderRailBackground}"
+                                BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                BorderThickness="1,0,0,0">
+                                <StackPanel Spacing="24">
+                                    <StackPanel Spacing="6">
+                                        <TextBlock
+                                            FontSize="28"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                            Text="The Neon Horizon" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSecondary}"
+                                            Text="A. J. Mercer" />
+                                    </StackPanel>
+
+                                    <StackPanel Spacing="10">
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSubtle}"
+                                            Text="TAGS" />
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <Border
+                                                Padding="10,6"
+                                                Background="{DynamicResource Ardelle.Demo.Brush.TagCyberpunk}"
+                                                CornerRadius="{StaticResource Ardelle.Radius.Full}">
+                                                <TextBlock
+                                                    FontSize="12"
+                                                    Foreground="{DynamicResource Ardelle.Demo.Brush.OnTagCyberpunk}"
+                                                    Text="#cyberpunk" />
+                                            </Border>
+                                            <Border
+                                                Padding="10,6"
+                                                Background="{DynamicResource Ardelle.Demo.Brush.TagSciFi}"
+                                                CornerRadius="{StaticResource Ardelle.Radius.Full}">
+                                                <TextBlock
+                                                    FontSize="12"
+                                                    Foreground="{DynamicResource Ardelle.Demo.Brush.OnTagSciFi}"
+                                                    Text="#sci-fi" />
+                                            </Border>
+                                            <Border
+                                                Padding="10,6"
+                                                Background="{DynamicResource Ardelle.Demo.Brush.TagCompleted}"
+                                                CornerRadius="{StaticResource Ardelle.Radius.Full}">
+                                                <TextBlock
+                                                    FontSize="12"
+                                                    Foreground="{DynamicResource Ardelle.Demo.Brush.OnTagCompleted}"
+                                                    Text="#completed" />
+                                            </Border>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Spacing="10">
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSubtle}"
+                                            Text="DETAILS" />
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowDefinitions="Auto,Auto" RowSpacing="12">
+                                            <Border
+                                                Padding="16"
+                                                Background="{DynamicResource Ardelle.Brush.Surface}"
+                                                BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                                BorderThickness="2"
+                                                CornerRadius="{StaticResource Ardelle.Radius.XLarge}">
+                                                <StackPanel Spacing="4">
+                                                    <TextBlock FontSize="11" Foreground="{DynamicResource Ardelle.Brush.TextSubtle}" Text="STATUS" />
+                                                    <TextBlock FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource Ardelle.Brush.TextPrimary}" Text="Completed" />
+                                                </StackPanel>
+                                            </Border>
+
+                                            <Border
+                                                Grid.Column="1"
+                                                Padding="16"
+                                                Background="{DynamicResource Ardelle.Brush.Surface}"
+                                                BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                                BorderThickness="2"
+                                                CornerRadius="{StaticResource Ardelle.Radius.XLarge}">
+                                                <StackPanel Spacing="4">
+                                                    <TextBlock FontSize="11" Foreground="{DynamicResource Ardelle.Brush.TextSubtle}" Text="RATING" />
+                                                    <TextBlock FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource Ardelle.Brush.TextPrimary}" Text="4.8" />
+                                                </StackPanel>
+                                            </Border>
+
+                                            <Border
+                                                Grid.Row="1"
+                                                Padding="16"
+                                                Background="{DynamicResource Ardelle.Brush.Surface}"
+                                                BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                                BorderThickness="2"
+                                                CornerRadius="{StaticResource Ardelle.Radius.XLarge}">
+                                                <StackPanel Spacing="4">
+                                                    <TextBlock FontSize="11" Foreground="{DynamicResource Ardelle.Brush.TextSubtle}" Text="WORDS" />
+                                                    <TextBlock FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource Ardelle.Brush.TextPrimary}" Text="124,500" />
+                                                </StackPanel>
+                                            </Border>
+
+                                            <Border
+                                                Grid.Column="1"
+                                                Grid.Row="1"
+                                                Padding="16"
+                                                Background="{DynamicResource Ardelle.Brush.Surface}"
+                                                BorderBrush="{DynamicResource Ardelle.Brush.Outline}"
+                                                BorderThickness="2"
+                                                CornerRadius="{StaticResource Ardelle.Radius.XLarge}">
+                                                <StackPanel Spacing="4">
+                                                    <TextBlock FontSize="11" Foreground="{DynamicResource Ardelle.Brush.TextSubtle}" Text="ADDED" />
+                                                    <TextBlock FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource Ardelle.Brush.TextPrimary}" Text="Oct 24, 2023" />
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Spacing="10">
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource Ardelle.Brush.TextSubtle}"
+                                            Text="IN SAME UNIVERSE" />
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                            <StackPanel Spacing="8">
+                                                <Border
+                                                    Height="164"
+                                                    Background="{DynamicResource Ardelle.Demo.Brush.Universe01}"
+                                                    BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                                                    BorderThickness="2"
+                                                    CornerRadius="{StaticResource Ardelle.Radius.Large}">
+                                                    <Grid>
+                                                        <TextBlock
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="18"
+                                                            FontWeight="Bold"
+                                                            Foreground="{DynamicResource Ardelle.Demo.Brush.HeroForeground}"
+                                                            Text="Echoes" />
+                                                    </Grid>
+                                                </Border>
+                                                <TextBlock
+                                                    FontSize="13"
+                                                    FontWeight="SemiBold"
+                                                    Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                                    Text="Echoes of the Core" />
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" Spacing="8">
+                                                <Border
+                                                    Height="164"
+                                                    Background="{DynamicResource Ardelle.Demo.Brush.Universe02}"
+                                                    BorderBrush="{DynamicResource Ardelle.Brush.OutlineStrong}"
+                                                    BorderThickness="2"
+                                                    CornerRadius="{StaticResource Ardelle.Radius.Large}">
+                                                    <Grid>
+                                                        <TextBlock
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="18"
+                                                            FontWeight="Bold"
+                                                            Foreground="{DynamicResource Ardelle.Demo.Brush.HeroForeground}"
+                                                            Text="Synapse" />
+                                                    </Grid>
+                                                </Border>
+                                                <TextBlock
+                                                    FontSize="13"
+                                                    FontWeight="SemiBold"
+                                                    Foreground="{DynamicResource Ardelle.Brush.TextPrimary}"
+                                                    Text="Synapse Drifter" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </card:Card>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
