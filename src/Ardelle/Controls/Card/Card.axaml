@@ -1,0 +1,52 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachedProperties="clr-namespace:Ardelle.AttachedProperties"
+    xmlns:controls="using:Ardelle.Controls.Card"
+    xmlns:markupExtensions="clr-namespace:Ardelle.MarkupExtensions">
+    <Design.PreviewWith>
+        <controls:Card
+            Width="500"
+            Height="300"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            attachedProperties:Brutalization.IsBrutalized="True"
+            Background="{markupExtensions:ColorToken Name=Secondary}">
+            <TextBlock
+                Background="Red"
+                FontSize="24"
+                Foreground="{markupExtensions:ColorToken Name=OnSecondary}"
+                Text="Brutalized Card" />
+        </controls:Card>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
+        <Setter Property="Background" Value="{StaticResource DefaultCardBackground}" />
+        <Setter Property="CornerRadius" Value="{StaticResource Pixeval.Radius.Large}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultCardBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:Card">
+                <Grid Margin="{StaticResource CardContainerGridMargin}" Background="Transparent">
+                    <Border
+                        x:Name="PART_BackgroundBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{StaticResource DefaultCardBorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

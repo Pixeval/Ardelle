@@ -1,0 +1,69 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Ardelle.Controls.Buttons"
+    xmlns:markupExtensions="clr-namespace:Ardelle.MarkupExtensions">
+    <Design.PreviewWith>
+        <controls:ActionButton />
+    </Design.PreviewWith>
+
+    <ControlTheme
+        x:Key="{x:Type controls:ActionButton}"
+        BasedOn="{StaticResource BaseButtonTheme}"
+        TargetType="controls:ActionButton">
+        <Setter Property="Background" Value="{StaticResource Pixeval.Color.Primary}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="999" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBrutalizationShadowBrush}" />
+        <Style Selector="^:disabled">
+            <Setter Property="BorderBrush" Value="{Binding Source={StaticResource DefaultBrutalizationShadowBrush}, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=2}" />
+        </Style>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Padding="15"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
+                    <Grid>
+                        <Border
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding BorderBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            UseLayoutRounding="True">
+                            <Border.RenderTransform>
+                                <TranslateTransform X="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" Y="{StaticResource DefaultActionButtonBrutalizationShadowOffset}" />
+                            </Border.RenderTransform>
+                        </Border>
+                        <Border
+                            x:Name="PART_GeneralButtonContainerBorder"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            RenderTransform="translate(0, 0)"
+                            UseLayoutRounding="True">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut />
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Border.Transitions>
+                            <ContentPresenter
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover/template/Border#PART_GeneralButtonContainerBorder">
+            <Setter Property="RenderTransform" Value="{StaticResource DefaultActionButtonHoverTransform}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

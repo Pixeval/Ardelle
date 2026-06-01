@@ -1,0 +1,22 @@
+<Window
+    x:Class="Ardelle.Demo.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:buttons="clr-namespace:Ardelle.Controls.Buttons;assembly=Ardelle"
+    xmlns:card="clr-namespace:Ardelle.Controls.Card;assembly=Ardelle"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:markupExtensions="clr-namespace:Ardelle.MarkupExtensions;assembly=Ardelle"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:CompileBindings="False"
+    Title="Ardelle.Demo"
+    mc:Ignorable="d"
+    d:DesignHeight="450"
+    d:DesignWidth="800">
+    <Grid>
+        <buttons:ActionIconButton
+            Content="Press Me!"
+            Icon="{markupExtensions:SymbolIcon Save}"
+            IsEnabled="True"
+            IsLabelCollapsed="True" />
+    </Grid>
+</Window>

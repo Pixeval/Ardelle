@@ -1,0 +1,46 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Ardelle.Controls.Buttons"
+    xmlns:markupExtensions="clr-namespace:Ardelle.MarkupExtensions">
+    <controls:ColorBlendConverter x:Key="ColorBlendConverter" />
+    <Design.PreviewWith>
+        <controls:OutlineButton />
+    </Design.PreviewWith>
+
+    <ControlTheme
+        x:Key="{x:Type controls:OutlineButton}"
+        BasedOn="{StaticResource BaseButtonTheme}"
+        TargetType="controls:OutlineButton">
+        <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultOutlineButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource DefaultOutlineButtonBorderThickness}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    x:Name="PART_GeneralButtonContainerBorder"
+                    Padding="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        Foreground="{TemplateBinding Foreground}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledHoveredBackground}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonEnabledPressedBackground}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{StaticResource DefaultOutlineButtonDisabledBackground}" />
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneTime, Converter={x:Static markupExtensions:ArdelleConverters.ShiftedColorBrush}, ConverterParameter=4}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

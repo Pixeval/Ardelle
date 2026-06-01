@@ -1,0 +1,11 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Ardelle/Themes/Colors.axaml" />
+                <ResourceInclude Source="avares://Ardelle/Themes/Corners.axaml" />
+                <ResourceInclude Source="avares://Ardelle/Themes/Controls.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+</Styles>
